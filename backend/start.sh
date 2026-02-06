@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd backend
+cd web_backend
 pip install -r requirements.txt
 
 # Generate migrations (not recommended for production, but possible)
