@@ -1,0 +1,5 @@
+export const youtubeVideos = [
+  'https://youtube.com/shorts/LhNOeShvWZw?si=-vQDyX6uRawIV2HV',
+  'https://youtube.com/shorts/8VYirxN0Ryw?si=dOA2s_eTpfaj51X8',
+  'https://youtube.com/shorts/nj0z9h43_po?si=FrKF43CgH4t0N-2L'
+];
