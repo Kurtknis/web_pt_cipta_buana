@@ -2,7 +2,7 @@
 set -e
 
 cd web_backend
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # Generate migrations (not recommended for production, but possible)
 python manage.py makemigrations --noinput
