@@ -77,10 +77,7 @@ else:
     }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",      # React dev server (Vite)
-    "http://localhost:5173",      # Vite default port
-    "http://127.0.0.1:8000",      # Django dev server
-    "https://yourfrontend.com",   # production domain
+    'https://ptcipta.up.railway.app:8000',
 ]
 
 ROOT_URLCONF = 'web_backend.urls'
