@@ -14,7 +14,6 @@ import Furniture from './pages/Furniture';
 import Clients from './pages/Clients';
 import Consultation from './pages/Consultation';
 import Contact from './pages/Contact';
-import Test from './Test';
 import './App.css';
 
 // Scroll to top or hash on route change
