@@ -6,7 +6,7 @@
   },
   "deploy": {
     "runtime": "V2",
-    "startCommand": "npx serve -s dist",
+    "startCommand": "bash start.sh",
     "numReplicas": 1,
     "sleepApplication": false,
     "useLegacyStacker": false,

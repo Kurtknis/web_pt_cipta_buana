@@ -9,5 +9,4 @@ python manage.py migrate --noinput
 
 python manage.py collectstatic --noinput
 
-PORT="${PORT:-8000}"
-waitress-serve --listen=0.0.0.0:${PORT} web_backend.wsgi:application
+waitress-serve --listen=0.0.0.0:$PORT web_backend.wsgi:application
