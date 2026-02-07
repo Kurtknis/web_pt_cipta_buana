@@ -12,5 +12,6 @@ python manage.py migrate --noinput
 # Collect static files
 python manage.py collectstatic --noinput
 
-# Start Waitress
-waitress-serve --listen=0.0.0.0:8000 web_backend.wsgi:application
+# Start Waitress (Railway sets PORT; default 8000 for local)
+PORT="${PORT:-8000}"
+waitress-serve --listen=0.0.0.0:${PORT} web_backend.wsgi:application

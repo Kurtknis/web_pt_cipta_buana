@@ -76,9 +76,10 @@ else:
         'PAGE_SIZE': 10,
     }
 
-CORS_ALLOWED_ORIGINS = [
-    'https://ptcipta.up.railway.app:8000',
-]
+# Comma-separated list of frontend origins (e.g. https://your-frontend.up.railway.app)
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
+    'http://localhost:5173',
+])
 
 ROOT_URLCONF = 'web_backend.urls'
 
