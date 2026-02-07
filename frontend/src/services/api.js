@@ -14,6 +14,9 @@ export const submitConsultation = async (formData) => {
       deskripsi: formData.description,
     };
 
+    console.log("API URL:", API_BASE_URL);
+    console.log("API Key:", API_KEY);
+
     const response = await fetch(`${API_BASE_URL}/konsultasi/`, {
       method: 'POST',
       headers: {
