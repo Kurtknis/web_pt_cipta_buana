@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'api',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'web_backend.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 # Railway: prefer DATABASE_PUBLIC_URL (private DATABASE_URL uses postgres.railway.internal
 # which may not resolve in all deployment contexts).
-DATABASES = { "default": dj_database_url.config( default=os.environ.get("DATABASE_URL") ) }
+DATABASES = { "default": dj_database_url.config( default=env("DATABASE_URL") ) }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
