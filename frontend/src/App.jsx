@@ -55,7 +55,6 @@ function App() {
             <Route path="/klien" element={<Clients />} />
             <Route path="/konsultasi" element={<Consultation />} />
             <Route path="/kontak" element={<Contact />} />
-            <Route path="/test" element={<Test />} />
           </Routes>
           <Footer />
         </div>
