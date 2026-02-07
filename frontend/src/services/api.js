@@ -23,6 +23,16 @@ export const submitConsultation = async (formData) => {
       body: JSON.stringify(payload),
     });
 
+    const text = await response.text();
+    console.log('Raw response:', text);
+    
+    let data = {};
+    try {
+      data = JSON.parse(rawText);
+    } catch (err) {
+      console.warn('Response was not valid JSON');
+    }
+
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(JSON.stringify(errorData));
