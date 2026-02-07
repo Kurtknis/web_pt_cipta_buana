@@ -1,5 +1,6 @@
 // API service for backend communication
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const API_KEY = import.meta.env.VITE_API_KEY
 
 export const submitConsultation = async (formData) => {
   try {
@@ -17,6 +18,7 @@ export const submitConsultation = async (formData) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-API-KEY': API_KEY,
       },
       body: JSON.stringify(payload),
     });
