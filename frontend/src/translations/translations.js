@@ -34,7 +34,7 @@ export const translations = {
     // Home
     home: {
       heroTitle: 'Wujudkan Ruang Impian Anda',
-      heroSubtitle: 'Spesialis Design Interior, Arsitektur & Kontraktor Bangunan Profesional',
+      heroSubtitle: 'Perusahaan Kami — Berdiri lebih dari 5 tahun, PT Cipta Kreasi Buana telah tumbuh menjadi nama terpercaya di industri desain interior Indonesia. Kami mengkhususkan diri dalam menciptakan ruang transformatif untuk rumah tinggal, kantor, bangunan komersial, dan properti industri.',
       freeConsultation: 'Konsultasi Gratis',
       viewPortfolio: 'Lihat Portfolio',
       projectsCompleted: 'Proyek Selesai',

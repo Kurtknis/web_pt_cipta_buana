@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -113,6 +115,7 @@ html {
 }
 
 .logo h1 {
+  font-family: 'Poppins', sans-serif;
   font-size: 1.85rem;
   font-weight: 800;
   color: var(--white);
@@ -603,6 +606,8 @@ html {
 /* Services - profesional tanpa icon */
 .services {
   background: var(--beige);
+  /* extra top spacing to avoid overlapping with fixed navbar */
+  padding-top: calc(5rem + 80px);
 }
 
 .services-grid {
@@ -1704,7 +1709,7 @@ html {
 /* ===== 
 FURNITURE PAGE IKEA STYLE ===== */
 .furniture-ikea {
-  padding: 120px 0 80px;
+  padding: 160px 0 80px;
   background: var(--white);
 }
 
