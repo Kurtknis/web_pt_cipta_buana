@@ -763,7 +763,7 @@ function Portfolio() {
 
               {filteredItems.length === 0 && (
                 <div className="no-results-unique">
-                    <div className="no-results-icon">🔍</div>
+                    <div className="no-results-icon"><Search size={48} strokeWidth={1.5} /></div>
                     <h3>{t('portfolio.noResults.title')}</h3>
                     <p>{t('portfolio.noResults.subtitle')}</p>
                     <button onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}>
@@ -943,11 +943,11 @@ function Portfolio() {
                   <h4>{t('portfolio.modal.challengeSolution')}</h4>
                   <div className="challenge-solution-unique">
                     <div className="challenge-unique">
-                      <strong>🎯 {t('portfolio.modal.challenge')}:</strong>
+                      <strong>{t('portfolio.modal.challenge')}:</strong>
                       <p>{selectedItem.challenges}</p>
                     </div>
                     <div className="solution-unique">
-                      <strong>💡 {t('portfolio.modal.solution')}:</strong>
+                      <strong>{t('portfolio.modal.solution')}:</strong>
                       <p>{selectedItem.solution}</p>
                     </div>
                   </div>
@@ -955,7 +955,7 @@ function Portfolio() {
 
                 {selectedItem.awards && selectedItem.awards.length > 0 && (
                   <div className="project-awards-unique">
-                    <h4>🏆 {t('portfolio.modal.awards')}</h4>
+                    <h4>{t('portfolio.modal.awards')}</h4>
                     <div className="awards-list-unique">
                       {selectedItem.awards.map((award, index) => (
                         <div key={index} className="award-item-unique">
@@ -968,7 +968,7 @@ function Portfolio() {
                 )}
 
                 <div className="client-testimonial">
-                  <h4>💬 {t('portfolio.modal.testimonial')}</h4>
+                  <h4>{t('portfolio.modal.testimonial')}</h4>
                   <blockquote>
                     "{selectedItem.testimonial}"
                   </blockquote>

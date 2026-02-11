@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Home, Ruler, Building2, Hammer } from 'lucide-react';
 import '../App.css';
 
 function ServiceDetail() {
@@ -9,7 +9,7 @@ function ServiceDetail() {
   const serviceDetails = {
     'design-interior': {
       title: 'Design Interior',
-      icon: '🏠',
+      icon: Home,
       description: 'Layanan design interior profesional untuk menciptakan ruang yang indah, fungsional, dan sesuai dengan kepribadian Anda.',
       features: [
         'Konsultasi desain interior lengkap',
@@ -36,7 +36,7 @@ function ServiceDetail() {
     },
     'arsitektur': {
       title: 'Arsitektur',
-      icon: '📐',
+      icon: Ruler,
       description: 'Jasa arsitektur profesional untuk merancang bangunan yang estetis, fungsional, dan sesuai dengan kebutuhan serta budget Anda.',
       features: [
         'Perencanaan arsitektur lengkap',
@@ -63,7 +63,7 @@ function ServiceDetail() {
     },
     'kontraktor': {
       title: 'Kontraktor',
-      icon: '🏗️',
+      icon: Building2,
       description: 'Layanan kontraktor terpercaya dengan tim profesional berpengalaman untuk mewujudkan proyek konstruksi Anda dengan kualitas terbaik.',
       features: [
         'Konstruksi bangunan baru',
@@ -91,7 +91,7 @@ function ServiceDetail() {
     },
     'renovasi': {
       title: 'Renovasi',
-      icon: '🔨',
+      icon: Hammer,
       description: 'Layanan renovasi profesional untuk mentransformasi ruang lama menjadi ruang baru yang lebih modern, fungsional, dan indah.',
       features: [
         'Renovasi rumah dan bangunan',
@@ -141,7 +141,7 @@ function ServiceDetail() {
         </Link>
         
         <div className="service-detail-header">
-          <div className="service-detail-icon">{service.icon}</div>
+          <div className="service-detail-icon">{React.createElement(service.icon, { size: 48 })}</div>
           <h1 className="service-detail-title">{service.title}</h1>
           <p className="service-detail-description">{service.description}</p>
         </div>
