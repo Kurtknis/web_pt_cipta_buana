@@ -16,3 +16,6 @@ class Konsultasi(models.Model):
         verbose_name = 'Data Konsultasi'
         verbose_name_plural = verbose_name
         ordering = ['-tanggal_pengiriman_form']
+        
+    def __str__(self):
+        return f"{self.nama} - {self.proyek}"
