@@ -174,15 +174,7 @@ function Consultation() {
                   <span className="stat-label">Konsultasi</span>
                 </div>
               </div>
-              <div className="stat-item-enhanced">
-                <div className="stat-icon">
-                  <Users size={28} />
-                </div>
-                <div className="stat-content">
-                  <span className="stat-number">15+</span>
-                  <span className="stat-label">Ahli Berpengalaman</span>
-                </div>
-              </div>
+
               <div className="stat-item-enhanced">
                 <div className="stat-icon">
                   <Star size={28} />
