@@ -1069,10 +1069,195 @@ html {
 }
 
 .pricing-consult-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   text-align: center;
   padding: 0.6rem 1.25rem !important;
   font-size: 0.9rem !important;
+  margin-top: 0.5rem;
+}
+
+/* Pricing Page - Layout profesional */
+.pricing-page {
+  padding-bottom: 4rem;
+}
+
+.pricing-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: var(--white);
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.pricing-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--black);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.pricing-hero-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--white);
+}
+
+.pricing-hero-subtitle {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+/* Range Harga per m² */
+.pricing-range-section {
+  padding: 4rem 0;
+  background: var(--white);
+}
+
+.pricing-range-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.pricing-range-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-range-subtitle {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.pricing-range-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-range-card {
+  background: var(--beige);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--beige-dark);
+  transition: var(--transition);
+}
+
+.pricing-range-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 6px 20px rgba(201, 162, 39, 0.12);
+}
+
+.pricing-range-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-range-sqm {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.pricing-range-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.pricing-range-desc {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.pricing-range-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Section Referensi Proyek */
+.pricing-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-section-subtitle {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.pricing-project-desc {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pricing-project-title {
+  font-size: 1.1rem;
+}
+
+.pricing-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.pricing-empty svg {
+  opacity: 0.5;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.pricing-cta p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.pricing-cta-btn {
+  padding: 0.75rem 2rem !important;
+  font-size: 1rem !important;
 }
 
 /* Our Project Section (Portfolio) */

@@ -16,7 +16,7 @@ export const translations = {
     // About
     about: {
       title: 'Tentang Perusahaan Kami',
-      intro: 'Berdiri lebih dari 5 tahun, PT Cipta Kreasi Buana telah tumbuh menjadi nama terpercaya di industri desain interior Indonesia. Kami mengkhususkan diri dalam menciptakan ruang transformatif untuk rumah tinggal, kantor, bangunan komersial, dan properti industri.',
+      intro: 'Perusahaan Kami PT Cipta Kreasi Buana lahir dari ambisi untuk mengubah cara ruang diciptakan dan dirasakan. Dengan pengalaman lebih dari lima tahun, kami menghadirkan desain interior yang strategis, fungsional, dan visioner untuk hunian, perkantoran, properti komersial, hingga kawasan industri. Kami percaya ruang yang dirancang dengan tepat mampu mendorong pertumbuhan, efisiensi, dan nilai bisnis.',
       learnMore: 'Pelajari Lebih Lanjut',
       visionTitle: 'Visi Kami',
       vision: '"Menjadi pencerita ruang - di mana setiap desain berbicara, menginspirasi, dan menjadi milik."',
@@ -127,8 +127,17 @@ export const translations = {
     // Pricing
     pricing: {
       title: 'Proyek & Harga',
-      subtitle: 'Lihat proyek kami beserta estimasi biaya per proyek',
-      consult: 'Konsultasi Proyek'
+      subtitle: 'Estimasi biaya transparan dan referensi proyek kami. Harga per m² untuk luas 100 m² ke atas.',
+      consult: 'Konsultasi Proyek',
+      rangeTitle: 'Range Harga per m²',
+      rangeSubtitle: 'Estimasi biaya desain interior & konstruksi berdasarkan luas bangunan. Harga dapat bervariasi sesuai material, kompleksitas, dan lokasi.',
+      sqmRange: 'Luas',
+      pricePerSqm: 'Estimasi per m²',
+      from: 'dari',
+      to: 'sampai',
+      note: 'Harga perkiraan. Dapatkan penawaran pasti dengan konsultasi gratis.',
+      projectRef: 'Referensi Proyek',
+      projectRefSub: 'Beberapa proyek yang telah kami selesaikan beserta kisaran biaya.'
     },
     // Gallery
     gallery: {
@@ -364,8 +373,17 @@ export const translations = {
     },
     pricing: {
       title: 'Projects & Pricing',
-      subtitle: 'View our projects with estimated cost per project',
-      consult: 'Consult Project'
+      subtitle: 'Transparent cost estimates and our project references. Price per m² for areas from 100 m².',
+      consult: 'Consult Project',
+      rangeTitle: 'Price Range per m²',
+      rangeSubtitle: 'Estimated cost for interior design & construction by floor area. Price may vary by material, complexity, and location.',
+      sqmRange: 'Area',
+      pricePerSqm: 'Est. per m²',
+      from: 'from',
+      to: 'to',
+      note: 'Indicative pricing. Get a fixed quote with a free consultation.',
+      projectRef: 'Project References',
+      projectRefSub: 'Selected completed projects with cost ranges.'
     },
     gallery: {
       title: 'Project Gallery',
@@ -579,8 +597,17 @@ export const translations = {
     },
     pricing: {
       title: '项目与价格',
-      subtitle: '查看我们的项目及每个项目的估算成本',
-      consult: '项目咨询'
+      subtitle: '透明成本估算与项目参考。100平方米起按平方米计价。',
+      consult: '项目咨询',
+      rangeTitle: '每平方米价格范围',
+      rangeSubtitle: '按建筑面积估算室内设计与施工成本。价格因材料、复杂度和地点而异。',
+      sqmRange: '面积',
+      pricePerSqm: '每平方米估算',
+      from: '从',
+      to: '至',
+      note: '参考价格。免费咨询获取准确报价。',
+      projectRef: '项目参考',
+      projectRefSub: '我们已完成的部分项目及成本范围。'
     },
     gallery: {
       title: '项目画廊',
@@ -794,8 +821,17 @@ export const translations = {
     },
     pricing: {
       title: 'Proyectos y Precios',
-      subtitle: 'Vea nuestros proyectos con costo estimado por proyecto',
-      consult: 'Consultar Proyecto'
+      subtitle: 'Estimaciones transparentes y referencias de proyectos. Precio por m² desde 100 m².',
+      consult: 'Consultar Proyecto',
+      rangeTitle: 'Rango de precio por m²',
+      rangeSubtitle: 'Costo estimado de diseño interior y construcción por superficie. El precio puede variar según material, complejidad y ubicación.',
+      sqmRange: 'Superficie',
+      pricePerSqm: 'Est. por m²',
+      from: 'de',
+      to: 'a',
+      note: 'Precio orientativo. Obtenga una cotización fija con consulta gratuita.',
+      projectRef: 'Referencias de Proyectos',
+      projectRefSub: 'Proyectos completados con rangos de costo.'
     },
     gallery: {
       title: 'Galería de Proyectos',

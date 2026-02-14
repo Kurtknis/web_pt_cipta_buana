@@ -2,18 +2,15 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronRight, X, ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { youtubeVideos } from '../data/link_video';
-import { projectsWithPricing } from '../data/projectsWithPricing';
+import { youtubeVideos, homePortfolioItems } from '../content/homeContent';
+import { pricingProjects, pricingCategories } from '../content/pricingPageContent';
+import { contactInfo } from '../content/contactPageContent';
 import '../App.css';
 
-const portfolioItems = [
-  { title: 'Villa Minimalis Modern Bintaro', category: 'Residential', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800', description: 'Villa minimalis dengan konsep terbuka, material natural, dan pencahayaan optimal. Hasil renovasi lengkap dengan desain interior yang selaras dengan lingkungan.', images: ['https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800', 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800', 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800'] },
-  { title: 'Kantor Premium SCBD', category: 'Commercial', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800', description: 'Kantor premium dengan layout modern, sistem pencahayaan cerdas, dan finishing berkualitas tinggi untuk produktivitas maksimal.', images: ['https://images.unsplash.com/photo-1497366216548-37526070297c?w=800', 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800', 'https://images.unsplash.com/photo-1541558869434-2840d308329a?w=800'] },
-  { title: 'Apartemen Kontemporer', category: 'Residential', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800', description: 'Apartemen kontemporer dengan optimasi ruang, material pilihan, dan sentuhan desain yang timeless.', images: ['https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800', 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800'] },
-  { title: 'Hotel Boutique Lobby', category: 'Hospitality', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800', description: 'Lobi hotel dengan nuansa hangat, furniture custom, dan detail arsitektur yang memukau tamu.', images: ['https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'] },
-  { title: 'Ruang Keluarga Scandinavian', category: 'Interior', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800', description: 'Ruang keluarga bergaya Skandinavia: bersih, terang, dan nyaman dengan palet netral dan kayu natural.', images: ['https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800', 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800'] },
-  { title: 'Workspace Industrial', category: 'Commercial', image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800', description: 'Workspace industrial dengan ekspos material, pencahayaan alami, dan suasana kreatif untuk tim.', images: ['https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800', 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800'] }
-];
+const portfolioItems = homePortfolioItems.map((item) => ({
+  ...item,
+  images: item.images || [item.image]
+}));
 
 const getEmbedUrl = (url) => {
   const shortsMatch = url.match(/shorts\/([a-zA-Z0-9_-]+)/);
@@ -21,13 +18,6 @@ const getEmbedUrl = (url) => {
   const videoId = shortsMatch ? shortsMatch[1] : (videoMatch ? videoMatch[1] : null);
   return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
 };
-
-const pricingCategories = [
-  { id: 'all', name: 'Semua' },
-  { id: 'Residential', name: 'Residential' },
-  { id: 'Corporate', name: 'Kantor/Corporate' },
-  { id: 'Commercial', name: 'Commercial' }
-];
 
 function HomeSimple() {
   const { t } = useLanguage();
@@ -37,8 +27,8 @@ function HomeSimple() {
   const [selectedPricingCategory, setSelectedPricingCategory] = useState('all');
 
   const filteredPricingProjects = selectedPricingCategory === 'all'
-    ? projectsWithPricing
-    : projectsWithPricing.filter(p => p.category === selectedPricingCategory);
+    ? pricingProjects
+    : pricingProjects.filter(p => p.category === selectedPricingCategory);
 
   const closeModal = useCallback(() => setPortfolioDetail(null), []);
   useEffect(() => {
@@ -381,7 +371,7 @@ function HomeSimple() {
               textAlign: 'left'
             }}>
               <h4 style={{ color: '#f5a623', marginBottom: '0.5rem' }}>{t('contact.phone')}</h4>
-              <p style={{ color: '#2c2c2c', margin: 0 }}>+62 123 456 789</p>
+              <p style={{ color: '#2c2c2c', margin: 0 }}>{contactInfo.phone}</p>
             </div>
             <div style={{
               padding: '2rem',
@@ -390,7 +380,7 @@ function HomeSimple() {
               textAlign: 'left'
             }}>
               <h4 style={{ color: '#f5a623', marginBottom: '0.5rem' }}>{t('contact.email')}</h4>
-              <p style={{ color: '#2c2c2c', margin: 0 }}>ciptaBuanaKreasi@gmail.com</p>
+              <p style={{ color: '#2c2c2c', margin: 0 }}>{contactInfo.email}</p>
             </div>
           </div>
         </div>
