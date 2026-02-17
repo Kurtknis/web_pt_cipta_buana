@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Konsultasi
+from .models import Konsultasi, Proyek, GambarProyek, Biaya, Klien, Kontak
 import os
 
 class KonsultasiSerializers(serializers.ModelSerializer):
@@ -21,3 +21,28 @@ class KonsultasiSerializers(serializers.ModelSerializer):
                     raise serializers.ValidationError('Deskripsi mengandung kata yang tidak diperbolehkan. Silakan perbaiki deskripsi Anda.')
         
         return value
+    
+class ProyekSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Proyek
+        fields = '__all__'
+        
+class GambarProyekSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = GambarProyek
+        fields = '__all__'
+        
+class BiayaSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Biaya
+        fields = '__all__'
+        
+class KlienSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Klien
+        fields = '__all__'
+        
+class KontakSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Kontak
+        fields = '__all__'
