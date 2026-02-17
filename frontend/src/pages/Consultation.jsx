@@ -150,10 +150,10 @@ function Consultation() {
           <div className="consultation-hero-content-enhanced">
             <div className="hero-badge">
               <Award size={16} />
-              <span>Konsultasi Premium</span>
+              <span>Konsultasi dengan ahli kami</span>
             </div>
             <h1>Konsultasi Gratis dengan Ahli Kami</h1>
-            <p>Wujudkan impian ruang ideal Anda bersama tim profesional PT Cipta Kreasi Buana. Dapatkan konsultasi gratis dan solusi terbaik untuk proyek Anda.</p>
+            <p>Wujudkan impian ruang ideal Anda bersama tim profesional CIPTA KREASI BUANA. Dapatkan konsultasi gratis dan solusi terbaik untuk proyek Anda.</p>
             
             <div className="consultation-stats-enhanced">
               <div className="stat-item-enhanced">
@@ -476,19 +476,19 @@ function Consultation() {
                   </div>
                   <div className="contact-content">
                     <h4>Telepon</h4>
-                    <p>+62 123 456 789</p>
+                    <p>+62 819-0314-0377</p>
                     <span>Senin - Sabtu, 08:00 - 18:00</span>
                   </div>
                   <div className="contact-arrow">→</div>
                 </a>
 
-                <a href="mailto:ciptaBuanaKreasi@gmail.com" className="contact-method-enhanced">
+                <a href="mailto:ptciptakreasibuana.cendana@gmail.com" className="contact-method-enhanced">
                   <div className="contact-icon">
                     <Mail size={24} />
                   </div>
                   <div className="contact-content">
                     <h4>Email</h4>
-                    <p>ciptaBuanaKreasi@gmail.com</p>
+                    <p>ptciptakreasibuana.cendana@gmail.com</p>
                     <span>Respon dalam 24 jam</span>
                   </div>
                   <div className="contact-arrow">→</div>
@@ -501,7 +501,7 @@ function Consultation() {
                   <div className="contact-content">
                     <h4>Alamat Kantor</h4>
                     <p>Jl. Cendana Residence Blok A3 No.3</p>
-                    <span>Kunjungi showroom kami</span>
+                    <span>Kunjungi kantor kami</span>
                   </div>
                   <div className="contact-arrow">→</div>
                 </a>
@@ -517,7 +517,7 @@ function Consultation() {
                   </div>
                   <div className="benefit-item">
                     <CheckCircle size={16} />
-                    <span>Tim ahli berpengalaman 10+ tahun</span>
+                    <span>Tim ahli berpengalaman lebih dari 10+ tahun</span>
                   </div>
                   <div className="benefit-item">
                     <CheckCircle size={16} />
@@ -571,8 +571,8 @@ function Consultation() {
                     <CheckCircle size={20} />
                   </div>
                   <div className="feature-content">
-                    <h5>Parkir Luas & Nyaman</h5>
-                    <p>Fasilitas parkir yang memadai</p>
+                    <h5>Konsultasi dua arah</h5>
+                    <p>Konsultasi langsung dengan tim ahli kami</p>
                   </div>
                 </div>
               </div>

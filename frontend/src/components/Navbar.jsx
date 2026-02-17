@@ -36,9 +36,9 @@ function Navbar() {
   };
 
   const languages = [
-    { code: 'id', name: 'Indonesia', flag: '🇮🇩' },
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'zh', name: 'Mandarin', flag: '🇨🇳' }
+    { code: 'id', name: 'Indonesia' },
+    { code: 'en', name: 'English' },
+    { code: 'zh', name: 'Mandarin' }
   ];
 
   const currentLang = languages.find(lang => lang.code === language) || languages[0];
@@ -55,7 +55,7 @@ function Navbar() {
           <div className="logo">
             <Link to="/" className="logo-link">
               <img src="/ptkreasi.jpg" alt="PT Cipta Kreasi Buana" className="logo-image" />
-              <h1>PT Cipta Kreasi Buana</h1>
+              <h1>CIPTA BUANA KREASI</h1>
             </Link>
           </div>
           
@@ -82,14 +82,13 @@ function Navbar() {
               {isLangOpen && (
                 <div className="language-dropdown">
                   {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      className={`language-option ${language === lang.code ? 'active' : ''}`}
-                      onClick={() => handleLanguageChange(lang.code)}
-                    >
-                      <span className="language-flag">{lang.flag}</span>
-                      <span className="language-name">{lang.name}</span>
-                    </button>
+                  <button
+                    key={lang.code}
+                    className={`language-option ${language === lang.code ? 'active' : ''}`}
+                    onClick={() => handleLanguageChange(lang.code)}
+                  >
+                    <span className="language-name">{lang.name}</span>
+                  </button>
                   ))}
                 </div>
               )}

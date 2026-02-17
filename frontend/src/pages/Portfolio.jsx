@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { Search, Filter, Eye, ExternalLink, Calendar, MapPin, Award, ChevronLeft, ChevronRight, X, Play, Grid, List } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { portfolioItems } from '../content/portfolioContent';
 import '../App.css';
 
 function Portfolio() {
@@ -20,289 +21,22 @@ function Portfolio() {
   const [touchEnd, setTouchEnd] = useState(null);
   const minSwipeDistance = 50;
 
-  const portfolioItems = [
-    {
-      id: 1,
-      title: 'Villa Minimalis Modern Bintaro',
-      category: 'Residential',
-      location: 'Bintaro, Jakarta Selatan',
-      year: '2024',
-      duration: '4 bulan',
-      budget: 'Rp 850 juta',
-      client: 'Keluarga Wijaya',
-      images: [
-        'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800',
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
-        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800',
-        'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Renovasi total villa dengan konsep minimalis modern. Mengutamakan pencahayaan alami, material natural, dan ruang terbuka yang mengalir.',
-      detailedDescription: 'Proyek renovasi villa seluas 350m² ini menghadirkan konsep open living yang memadukan ruang dalam dan luar.',
-      features: ['Open concept living', 'Smart home system', 'Sustainable materials', 'Landscape garden'],
-      challenges: 'Mengoptimalkan pencahayaan alami pada ruang yang sempit',
-      solution: 'Penggunaan skylight dan void area untuk sirkulasi cahaya optimal',
-      awards: ['Best Residential Design 2024', 'Sustainable Architecture Award'],
-      testimonial: 'Tim PT Cipta Kreasi Buana berhasil mewujudkan impian keluarga kami.',
-      clientRating: 5
-    },
-    {
-      id: 2,
-      title: 'Rumah Tropis Modern Pondok Indah',
-      category: 'Residential',
-      location: 'Pondok Indah, Jakarta Selatan',
-      year: '2024',
-      duration: '5 bulan',
-      budget: 'Rp 1.2 miliar',
-      client: 'Keluarga Santoso',
-      images: [
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800',
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
-        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Rumah tropis modern dengan ventilasi alami dan material ramah lingkungan.',
-      detailedDescription: 'Desain rumah yang mengutamakan sirkulasi udara alami dengan konsep tropis modern.',
-      features: ['Natural ventilation', 'Eco-friendly materials', 'Tropical garden', 'Rain water harvesting'],
-      challenges: 'Menciptakan rumah yang sejuk tanpa AC berlebihan',
-      solution: 'Desain cross ventilation dan penggunaan material yang tepat',
-      awards: ['Green Building Award 2024'],
-      testimonial: 'Rumah kami sekarang sejuk alami dan hemat energi.',
-      clientRating: 5
-    },
-    {
-      id: 3,
-      title: 'Townhouse Kontemporer BSD',
-      category: 'Residential',
-      location: 'BSD City, Tangerang',
-      year: '2023',
-      duration: '3 bulan',
-      budget: 'Rp 650 juta',
-      client: 'Bapak Wijaya',
-      images: [
-        'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800',
-        'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800',
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Townhouse kontemporer dengan desain yang efisien dan modern.',
-      detailedDescription: 'Optimasi ruang pada townhouse dengan desain vertikal yang smart.',
-      features: ['Vertical design', 'Space optimization', 'Modern fixtures', 'Smart storage'],
-      challenges: 'Memaksimalkan ruang pada lahan terbatas',
-      solution: 'Desain vertikal dengan storage tersembunyi',
-      awards: ['Compact Design Excellence'],
-      testimonial: 'Townhouse kecil terasa luas dan fungsional.',
-      clientRating: 4
-    },
-    {
-      id: 4,
-      title: 'Kantor Modern Tech Startup',
-      category: 'Commercial',
-      location: 'SCBD, Jakarta Pusat',
-      year: '2024',
-      duration: '3 bulan',
-      budget: 'Rp 1.2 miliar',
-      client: 'PT Teknologi Maju',
-      images: [
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
-        'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800',
-        'https://images.unsplash.com/photo-1541558869434-2840d308329a?w=800',
-        'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Desain kantor modern untuk startup teknologi dengan konsep collaborative workspace.',
-      detailedDescription: 'Kantor seluas 800m² ini dirancang dengan konsep agile workspace yang dapat beradaptasi.',
-      features: ['Flexible workspace', 'Biophilic design', 'Acoustic solutions', 'Tech-integrated furniture'],
-      challenges: 'Menciptakan ruang yang mendukung kolaborasi namun tetap produktif',
-      solution: 'Zonasi area dengan acoustic treatment dan furniture modular',
-      awards: ['Best Office Design 2024'],
-      testimonial: 'Kantor baru kami meningkatkan produktivitas tim hingga 40%.',
-      clientRating: 5
-    },
-    {
-      id: 5,
-      title: 'Co-working Space Senopati',
-      category: 'Commercial',
-      location: 'Senopati, Jakarta Selatan',
-      year: '2023',
-      duration: '4 bulan',
-      budget: 'Rp 950 juta',
-      client: 'Urban Workspace',
-      images: [
-        'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800',
-        'https://images.unsplash.com/photo-1541558869434-2840d308329a?w=800',
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Co-working space dengan desain industrial modern untuk freelancer dan startup.',
-      detailedDescription: 'Ruang kerja bersama yang inspiratif dengan berbagai zona kerja.',
-      features: ['Industrial design', 'Flexible seating', 'Creative zones', 'Community areas'],
-      challenges: 'Menciptakan privasi dalam ruang terbuka',
-      solution: 'Acoustic panels dan pembagian zona yang efektif',
-      awards: ['Best Co-working Design 2023'],
-      testimonial: 'Co-working space yang paling nyaman di Jakarta Selatan.',
-      clientRating: 5
-    },
-    {
-      id: 6,
-      title: 'Retail Store Fashion Brand',
-      category: 'Commercial',
-      location: 'Grand Indonesia, Jakarta Pusat',
-      year: '2024',
-      duration: '2 bulan',
-      budget: 'Rp 750 juta',
-      client: 'Fashion Brand Indonesia',
-      images: [
-        'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800',
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
-        'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Retail store dengan konsep luxury modern untuk fashion brand premium.',
-      detailedDescription: 'Store design yang mencerminkan brand identity dengan customer experience optimal.',
-      features: ['Luxury materials', 'Brand identity integration', 'Customer flow optimization', 'Premium lighting'],
-      challenges: 'Menciptakan brand experience yang memorable dalam space terbatas',
-      solution: 'Strategic layout dan premium material selection',
-      awards: ['Best Retail Design 2024'],
-      testimonial: 'Store kami sekarang menjadi flagship yang membanggakan.',
-      clientRating: 5
-    },
-    {
-      id: 7,
-      title: 'Hotel Boutique Lobby Menteng',
-      category: 'Hospitality',
-      location: 'Menteng, Jakarta Pusat',
-      year: '2023',
-      duration: '5 bulan',
-      budget: 'Rp 2.1 miliar',
-      client: 'Menteng Heritage Hotel',
-      images: [
-        'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800',
-        'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800',
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
-        'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Desain lobby hotel boutique dengan nuansa heritage modern yang memorable.',
-      detailedDescription: 'Lobby hotel dengan ceiling tinggi 6 meter menampilkan perpaduan art deco klasik.',
-      features: ['Heritage elements', 'Luxury materials', 'Ambient lighting', 'Art installations'],
-      challenges: 'Mempertahankan karakter heritage sambil memberikan kesan modern',
-      solution: 'Kombinasi material klasik dengan teknologi pencahayaan modern',
-      awards: ['Best Hospitality Interior 2023', 'Heritage Preservation Award'],
-      testimonial: 'Lobby kami sekarang menjadi landmark tersendiri.',
-      clientRating: 5
-    },
-    {
-      id: 8,
-      title: 'Restaurant Fine Dining',
-      category: 'Hospitality',
-      location: 'Kemang, Jakarta Selatan',
-      year: '2024',
-      duration: '3 bulan',
-      budget: 'Rp 850 juta',
-      client: 'Fine Dining Restaurant',
-      images: [
-        'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800',
-        'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800',
-        'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Restaurant fine dining dengan atmosfer intimate dan elegant.',
-      detailedDescription: 'Desain restaurant yang menciptakan dining experience yang tak terlupakan.',
-      features: ['Intimate atmosphere', 'Acoustic design', 'Premium materials', 'Mood lighting'],
-      challenges: 'Menciptakan suasana intimate dalam space yang cukup besar',
-      solution: 'Pembagian zona dengan different lighting mood',
-      awards: ['Best Restaurant Design 2024'],
-      testimonial: 'Restaurant kami sekarang fully booked setiap hari.',
-      clientRating: 5
-    },
-    {
-      id: 9,
-      title: 'Ruang Keluarga Skandinavia PIK',
-      category: 'Interior',
-      location: 'PIK, Jakarta Utara',
-      year: '2024',
-      duration: '1.5 bulan',
-      budget: 'Rp 320 juta',
-      client: 'Keluarga Lestari',
-      images: [
-        'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800',
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
-        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Redesign ruang keluarga dengan konsep Skandinavia: clean, bright, dan cozy.',
-      detailedDescription: 'Ruang keluarga yang mengutamakan kenyamanan dan kehangatan untuk quality time keluarga.',
-      features: ['Scandinavian aesthetics', 'Natural materials', 'Cozy atmosphere', 'Family-friendly design'],
-      challenges: 'Menciptakan suasana hangat di iklim tropis',
-      solution: 'Pemilihan material dan warna yang tepat dengan ventilasi optimal',
-      awards: ['Family Living Space Award 2024'],
-      testimonial: 'Ruang keluarga kami sekarang menjadi tempat favorit berkumpul.',
-      clientRating: 5
-    },
-    {
-      id: 10,
-      title: 'Master Bedroom Luxury',
-      category: 'Interior',
-      location: 'Kelapa Gading, Jakarta Utara',
-      year: '2023',
-      duration: '2 bulan',
-      budget: 'Rp 450 juta',
-      client: 'Keluarga Hartono',
-      images: [
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800',
-        'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800',
-        'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'
-      ],
-      mockups: [
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600',
-        'https://images.unsplash.com/photo-1549497538-303791108f95?w=600'
-      ],
-      description: 'Master bedroom dengan konsep luxury modern dan walk-in closet.',
-      detailedDescription: 'Kamar tidur utama yang menjadi private sanctuary dengan semua fasilitas premium.',
-      features: ['Walk-in closet', 'Luxury materials', 'Mood lighting', 'Private bathroom'],
-      challenges: 'Mengintegrasikan semua fasilitas dalam satu ruang',
-      solution: 'Smart layout dengan hidden storage solutions',
-      awards: ['Luxury Interior Award 2023'],
-      testimonial: 'Kamar tidur impian kami akhirnya terwujud.',
-      clientRating: 5
-    }
-  ];
-
-  const categories = [
-    { id: 'all', name: 'Semua Kategori', count: portfolioItems.length },
-    { id: 'Residential', name: 'Residensial', count: portfolioItems.filter(item => item.category === 'Residential').length },
-    { id: 'Commercial', name: 'Komersial', count: portfolioItems.filter(item => item.category === 'Commercial').length },
-    { id: 'Hospitality', name: 'Hospitality', count: portfolioItems.filter(item => item.category === 'Hospitality').length },
-    { id: 'Interior', name: 'Interior', count: portfolioItems.filter(item => item.category === 'Interior').length }
-  ];
+  const categoryNames = { Residential: 'Residensial', Commercial: 'Komersial', Hospitality: 'Hospitality', Interior: 'Interior' };
+  const categories = useMemo(() => {
+    const list = [{ id: 'all', name: 'Semua Kategori', count: portfolioItems.length }];
+    const seen = new Set();
+    portfolioItems.forEach((item) => {
+      if (!seen.has(item.category)) {
+        seen.add(item.category);
+        list.push({
+          id: item.category,
+          name: categoryNames[item.category] || item.category,
+          count: portfolioItems.filter((p) => p.category === item.category).length
+        });
+      }
+    });
+    return list;
+  }, [portfolioItems]);
 
   const filteredItems = useMemo(() => {
     return portfolioItems.filter(item => {
@@ -422,57 +156,43 @@ function Portfolio() {
   }, [selectedItem, isGalleryMode]);
 
   const ourProjectTypes = [
-    { key: 'residential', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800' },
-    { key: 'corporate', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800' },
-    { key: 'commercial', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }
-  ];
+    { key: 'residential', image: portfolioItems.find(p => p.category === 'Residential')?.images?.[0] || '' },
+    { key: 'corporate', image: portfolioItems.find(p => p.category === 'Commercial')?.images?.[0] || portfolioItems[0]?.images?.[0] || '' },
+    { key: 'commercial', image: portfolioItems.find(p => p.category === 'Commercial')?.images?.[0] || portfolioItems[0]?.images?.[0] || '' }
+  ].filter(t => t.image);
 
   return (
     <>
-      <section id="portfolio" className="section portfolio-gallery-unique">
+      <main id="portfolio" className="section portfolio-gallery-unique" role="main" aria-label="Portfolio proyek kami">
         <div className="container">
-          {/* OUR PROJECT Section */}
+          {/* OUR PROJECT Section - foto asli proyek */}
           <div className="our-project-section">
             <h2 className="our-project-title">{t('portfolio.ourProject')}</h2>
             <p className="our-project-subtitle">{t('portfolio.ourProjectSubtitle')}</p>
             <div className="our-project-grid">
               {ourProjectTypes.map(({ key, image }) => (
-                <div key={key} className="our-project-card">
+                <article key={key} className="our-project-card">
                   <div className="our-project-image">
-                    <img src={image} alt={t(`portfolio.projectTypes.${key}.title`)} loading="lazy" />
+                    <img src={image} alt={`Proyek ${t(`portfolio.projectTypes.${key}.title`)} - PT Cipta Kreasi Buana`} loading="lazy" />
                   </div>
                   <div className="our-project-content">
                     <h3>{t(`portfolio.projectTypes.${key}.title`)}</h3>
                     <p>{t(`portfolio.projectTypes.${key}.desc`)}</p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
 
-          <div className="portfolio-header-unique">
+          <header className="portfolio-header-unique">
             <div className="portfolio-header-content">
               <span className="portfolio-badge">{t('portfolio.badge')}</span>
               <h1 className="portfolio-title-unique">{t('portfolio.title')}</h1>
               <p className="portfolio-subtitle-unique">{t('portfolio.subtitle')}</p>
             </div>
-            <div className="portfolio-stats">
-              <div className="stat-item">
-                <span className="stat-number">500+</span>
-                <span className="stat-label">{t('portfolio.stats.projects')}</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">98%</span>
-                <span className="stat-label">{t('portfolio.stats.clients')}</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">15+</span>
-                <span className="stat-label">{t('portfolio.stats.awards')}</span>
-              </div>
-            </div>
-          </div>
+          </header>
 
-          {/* Enhanced Search and Filter */}
+          {/* Search and Filter - intuitif & aksesibel */}
           <div className="portfolio-controls-unique">
             <div className="search-container-unique">
               <Search size={20} />
@@ -562,7 +282,7 @@ function Portfolio() {
                               onKeyDown={(e) => { if (e.key === 'Enter') setSelectedItem(item); }}
                             >
                               <div className="portfolio-image-container-carousel">
-                                <img src={item.images[0]} alt={item.title} loading="lazy" />
+                                <img src={item.images[0]} alt={`${item.title} - Proyek PT Cipta Kreasi Buana`} loading="lazy" />
                                 <div className="portfolio-overlay-carousel">
                                   <div className="portfolio-info-preview">
                                     <span className="portfolio-category-badge-carousel">{item.category}</span>
@@ -604,31 +324,23 @@ function Portfolio() {
                                     <span>{item.awards.length}</span>
                                   </div>
                                 )}
-                                <div className="portfolio-rating">
-                                  {[...Array(5)].map((_, i) => (
-                                    <span key={i} className={`star ${i < item.clientRating ? 'filled' : ''}`}>★</span>
-                                  ))}
-                                </div>
+                                {(item.clientRating && item.clientRating > 0) && (
+                                  <div className="portfolio-rating">
+                                    {[...Array(5)].map((_, i) => (
+                                      <span key={i} className={`star ${i < (item.clientRating || 0) ? 'filled' : ''}`}>★</span>
+                                    ))}
+                                  </div>
+                                )}
                               </div>
                               <div className="portfolio-card-info-carousel">
                                 <h4 className="portfolio-card-title">{item.title}</h4>
                                 <p className="portfolio-description-preview">
-                                  {item.description.substring(0, 120)}...
+                                  {item.description.substring(0, 120)}{item.description.length > 120 ? '...' : ''}
                                 </p>
                                 <div className="portfolio-card-footer">
-                                  <span className="portfolio-client">Client: {item.client}</span>
+                                  {item.client && item.client !== '-' && <span className="portfolio-client">Client: {item.client}</span>}
                                   <span className="portfolio-duration">{item.duration}</span>
                                 </div>
-                                {/* mockup thumbnails */}
-                                {item.mockups && item.mockups.length > 0 && (
-                                  <div className="card-mockups">
-                                    {item.mockups.slice(0,2).map((m,mi) => (
-                                      <button key={mi} className="mockup-thumb-btn" onClick={(e)=>{e.stopPropagation(); openGallery(item.mockups, mi);}}>
-                                        <img src={m} alt={`Mockup ${mi+1}`} />
-                                      </button>
-                                    ))}
-                                  </div>
-                                )}
                               </div>
                             </div>
                           </div>
@@ -690,7 +402,7 @@ function Portfolio() {
                     onKeyDown={(e) => { if (e.key === 'Enter') setSelectedItem(item); }}
                   >
                     <div className="portfolio-image-container-unique">
-                      <img src={item.images[0]} alt={item.title} loading="lazy" />
+                      <img src={item.images[0]} alt={`${item.title} - Proyek PT Cipta Kreasi Buana`} loading="lazy" />
                       <div className="portfolio-overlay-unique">
                         <div className="portfolio-info-preview">
                           <span className="portfolio-category-badge-unique">{item.category}</span>
@@ -732,30 +444,23 @@ function Portfolio() {
                           <span>{item.awards.length}</span>
                         </div>
                       )}
-                      <div className="portfolio-rating">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className={`star ${i < item.clientRating ? 'filled' : ''}`}>★</span>
-                        ))}
-                      </div>
+                      {(item.clientRating && item.clientRating > 0) && (
+                        <div className="portfolio-rating">
+                          {[...Array(5)].map((_, i) => (
+                            <span key={i} className={`star ${i < (item.clientRating || 0) ? 'filled' : ''}`}>★</span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     <div className="portfolio-card-info-unique">
                       <h4 className="portfolio-card-title">{item.title}</h4>
                       <p className="portfolio-description-preview">
-                        {item.description.substring(0, 120)}...
+                        {item.description.substring(0, 120)}{item.description.length > 120 ? '...' : ''}
                       </p>
                       <div className="portfolio-card-footer">
-                        <span className="portfolio-client">Client: {item.client}</span>
+                        {item.client && item.client !== '-' && <span className="portfolio-client">Client: {item.client}</span>}
                         <span className="portfolio-duration">{item.duration}</span>
                       </div>
-                      {item.mockups && item.mockups.length > 0 && (
-                        <div className="card-mockups">
-                          {item.mockups.slice(0,2).map((m,mi) => (
-                            <button key={mi} className="mockup-thumb-btn" onClick={(e)=>{e.stopPropagation(); openGallery(item.mockups, mi);}}>
-                              <img src={m} alt={`Mockup ${mi+1}`} />
-                            </button>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   </div>
                 ))}
@@ -763,7 +468,7 @@ function Portfolio() {
 
               {filteredItems.length === 0 && (
                 <div className="no-results-unique">
-                    <div className="no-results-icon">🔍</div>
+                    <div className="no-results-icon"><Search size={48} strokeWidth={1.5} /></div>
                     <h3>{t('portfolio.noResults.title')}</h3>
                     <p>{t('portfolio.noResults.subtitle')}</p>
                     <button onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}>
@@ -774,7 +479,7 @@ function Portfolio() {
             </>
           )}
         </div>
-      </section>
+      </main>
 
       {/* Special Gallery Mode with Slide Transition */}
       {isGalleryMode && (
@@ -793,7 +498,7 @@ function Portfolio() {
               <div className="gallery-image-container">
                 <img 
                   src={galleryImages[currentImageIndex]} 
-                  alt={`Gallery ${currentImageIndex + 1}`}
+                  alt={`Portfolio PT Cipta Kreasi Buana - foto ${currentImageIndex + 1} dari ${galleryImages.length}`}
                   className="gallery-main-image"
                 />
                 <div className="gallery-info">
@@ -840,7 +545,7 @@ function Portfolio() {
                 <div className="modal-main-image">
                   <img 
                     src={selectedItem.images[currentImageIndex]} 
-                    alt={`${selectedItem.title} - ${currentImageIndex + 1}`}
+                    alt={`${selectedItem.title} - Proyek PT Cipta Kreasi Buana (${currentImageIndex + 1}/${selectedItem.images.length})`}
                   />
                   <button 
                     className="modal-gallery-btn"
@@ -867,32 +572,21 @@ function Portfolio() {
                     </button>
                   ))}
                 </div>
-
-                {/* Mockup Section */}
-                <div className="mockup-section">
-                  <h4>{t('portfolio.modal.designMockups')}</h4>
-                  <div className="mockup-grid">
-                    {selectedItem.mockups.map((mockup, index) => (
-                      <div key={index} className="mockup-item">
-                        <img src={mockup} alt={`Mockup ${index + 1}`} />
-                        <div className="mockup-label">Mockup {index + 1}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
 
-              {/* Enhanced Project Details */}
+              {/* Detail Proyek */}
               <div className="modal-details-unique">
                 <div className="modal-header-unique">
                   <div className="modal-category-unique">{selectedItem.category}</div>
                   <h2 className="modal-title-unique">{selectedItem.title}</h2>
-                  <div className="modal-rating">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={`star ${i < selectedItem.clientRating ? 'filled' : ''}`}>★</span>
-                    ))}
-                    <span className="rating-text">({selectedItem.clientRating}/5)</span>
-                  </div>
+                  {selectedItem.clientRating != null && selectedItem.clientRating > 0 && (
+                    <div className="modal-rating">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className={`star ${i < selectedItem.clientRating ? 'filled' : ''}`}>★</span>
+                      ))}
+                      <span className="rating-text">({selectedItem.clientRating}/5)</span>
+                    </div>
+                  )}
                   <div className="modal-meta-unique">
                     <div className="meta-item">
                       <MapPin size={16} />
@@ -905,57 +599,67 @@ function Portfolio() {
                   </div>
                 </div>
 
-                <div className="modal-description-unique">
-                  <h4>{t('portfolio.modal.projectDesc')}</h4>
-                  <p>{selectedItem.detailedDescription}</p>
-                </div>
+                {(selectedItem.detailedDescription || selectedItem.description) && (
+                  <div className="modal-description-unique">
+                    <h4>{t('portfolio.modal.projectDesc')}</h4>
+                    <p>{selectedItem.detailedDescription || selectedItem.description}</p>
+                  </div>
+                )}
 
                 <div className="project-specs-unique">
                   <h4>{t('portfolio.modal.projectSpecs')}</h4>
                   <div className="spec-grid-unique">
-                    <div className="spec-item-unique">
-                      <strong>{t('portfolio.modal.client')}:</strong>
-                      <span>{selectedItem.client}</span>
-                    </div>
+                    {selectedItem.client && selectedItem.client !== '-' && (
+                      <div className="spec-item-unique">
+                        <strong>{t('portfolio.modal.client')}:</strong>
+                        <span>{selectedItem.client}</span>
+                      </div>
+                    )}
                     <div className="spec-item-unique">
                       <strong>{t('portfolio.modal.duration')}:</strong>
                       <span>{selectedItem.duration}</span>
                     </div>
-                    <div className="spec-item-unique">
-                      <strong>{t('portfolio.modal.budget')}:</strong>
-                      <span>{selectedItem.budget}</span>
-                    </div>
+                    {selectedItem.budget && selectedItem.budget !== '-' && (
+                      <div className="spec-item-unique">
+                        <strong>{t('portfolio.modal.budget')}:</strong>
+                        <span>{selectedItem.budget}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="project-features-unique">
-                  <h4>{t('portfolio.modal.mainFeatures')}</h4>
-                  <div className="features-grid-unique">
-                    {selectedItem.features.map((feature, index) => (
-                      <span key={index} className="feature-tag-unique">
-                        ✓ {feature}
-                      </span>
-                    ))}
+                {selectedItem.features && selectedItem.features.length > 0 && (
+                  <div className="project-features-unique">
+                    <h4>{t('portfolio.modal.mainFeatures')}</h4>
+                    <div className="features-grid-unique">
+                      {selectedItem.features.map((feature, index) => (
+                        <span key={index} className="feature-tag-unique">
+                          ✓ {feature}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div className="project-challenge-unique">
-                  <h4>{t('portfolio.modal.challengeSolution')}</h4>
-                  <div className="challenge-solution-unique">
-                    <div className="challenge-unique">
-                      <strong>🎯 {t('portfolio.modal.challenge')}:</strong>
-                      <p>{selectedItem.challenges}</p>
-                    </div>
-                    <div className="solution-unique">
-                      <strong>💡 {t('portfolio.modal.solution')}:</strong>
-                      <p>{selectedItem.solution}</p>
+                {selectedItem.challenges && selectedItem.solution && (
+                  <div className="project-challenge-unique">
+                    <h4>{t('portfolio.modal.challengeSolution')}</h4>
+                    <div className="challenge-solution-unique">
+                      <div className="challenge-unique">
+                        <strong>{t('portfolio.modal.challenge')}:</strong>
+                        <p>{selectedItem.challenges}</p>
+                      </div>
+                      <div className="solution-unique">
+                        <strong>{t('portfolio.modal.solution')}:</strong>
+                        <p>{selectedItem.solution}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 {selectedItem.awards && selectedItem.awards.length > 0 && (
                   <div className="project-awards-unique">
-                    <h4>🏆 {t('portfolio.modal.awards')}</h4>
+                    <h4>{t('portfolio.modal.awards')}</h4>
                     <div className="awards-list-unique">
                       {selectedItem.awards.map((award, index) => (
                         <div key={index} className="award-item-unique">
@@ -967,13 +671,15 @@ function Portfolio() {
                   </div>
                 )}
 
-                <div className="client-testimonial">
-                  <h4>💬 {t('portfolio.modal.testimonial')}</h4>
-                  <blockquote>
-                    "{selectedItem.testimonial}"
-                  </blockquote>
-                  <cite>- {selectedItem.client}</cite>
-                </div>
+                {selectedItem.testimonial && (
+                  <div className="client-testimonial">
+                    <h4>{t('portfolio.modal.testimonial')}</h4>
+                    <blockquote>
+                      "{selectedItem.testimonial}"
+                    </blockquote>
+                    {selectedItem.client && selectedItem.client !== '-' && <cite>- {selectedItem.client}</cite>}
+                  </div>
+                )}
               </div>
             </div>
           </div>
