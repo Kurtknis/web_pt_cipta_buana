@@ -15,6 +15,7 @@ class Konsultasi(models.Model):
     
     class Meta:
         verbose_name = 'Data Konsultasi'
+        verbose_name_plural = verbose_name
         ordering = ['-tanggal_pengiriman_form']
         
     def __str__(self):
@@ -26,6 +27,7 @@ class Gambar(models.Model):
     
     class Meta:
         verbose_name = 'Data Konsultasi'
+        verbose_name_plural = verbose_name
     
     def save(self, *args, **kwargs):
         if not self.alt:
@@ -45,6 +47,7 @@ class Proyek(models.Model):
     
     class Meta:
         verbose_name = 'Daftar Proyek'
+        verbose_name_plural = verbose_name
         
     def __str__(self):
         return self.judul
@@ -55,6 +58,7 @@ class GambarProyek(models.Model):
     
     class Meta:
         verbose_name = 'Galeri Proyek'
+        verbose_name_plural = verbose_name
         
     def __str__(self):
         return f'Gambar {self.proyek}'
@@ -66,6 +70,7 @@ class Biaya(models.Model):
     
     class Meta:
         verbose_name = 'Daftar Harga per meter persegi'
+        verbose_name_plural = verbose_name
         
     def __str__(self):
         return f'{self.luas} - {self.harga}'
@@ -75,6 +80,7 @@ class Klien(models.Model):
     
     class Meta:
         verbose_name = 'Daftar Klien'
+        verbose_name_plural = verbose_name
         
     def __str__(self):
         return self.nama
@@ -86,6 +92,7 @@ class Kontak(models.Model):
     
     class Meta:
         verbose_name = 'Kontak Perusahaan'
+        verbose_name_plural = verbose_name
         
     def __str__(self):
         return f'{self.telepon} - {self.email} - {self.alamat}'
