@@ -34,7 +34,7 @@ export const translations = {
     // Home
     home: {
       heroTitle: 'Wujudkan Ruang Impian Anda',
-      heroSubtitle: 'Perusahaan Kami — Berdiri lebih dari 5 tahun, PT Cipta Kreasi Buana telah tumbuh menjadi nama terpercaya di industri desain interior Indonesia. Kami mengkhususkan diri dalam menciptakan ruang transformatif untuk rumah tinggal, kantor, bangunan komersial, dan properti industri.',
+      heroSubtitle: 'Perusahaan Kami PT Cipta Kreasi Buana lahir dari ambisi untuk mengubah cara ruang diciptakan dan dirasakan. Dengan pengalaman lebih dari lima tahun, kami menghadirkan desain interior yang strategis, fungsional, dan visioner untuk hunian, perkantoran, properti komersial, hingga kawasan industri. Kami percaya ruang yang dirancang dengan tepat mampu mendorong pertumbuhan, efisiensi, dan nilai bisnis.',
       freeConsultation: 'Konsultasi Gratis',
       viewPortfolio: 'Lihat Portfolio',
       projectsCompleted: 'Proyek Selesai',
@@ -209,7 +209,10 @@ export const translations = {
       title: 'Hubungi Kami',
       phone: 'Telepon',
       email: 'Email',
-      address: 'Alamat'
+      address: 'Alamat',
+      callNow: 'Hubungi via Telepon',
+      sendEmail: 'Kirim Email',
+      viewMap: 'Buka di Google Maps'
     },
     // Footer
     footer: {
@@ -451,7 +454,10 @@ export const translations = {
       title: 'Contact Us',
       phone: 'Phone',
       email: 'Email',
-      address: 'Address'
+      address: 'Address',
+      callNow: 'Call Now',
+      sendEmail: 'Send Email',
+      viewMap: 'Open in Google Maps'
     },
     footer: {
       description: 'Realizing your dream space with professional touch and latest innovations in interior design and architecture.',
@@ -675,7 +681,10 @@ export const translations = {
       title: '联系我们',
       phone: '电话',
       email: '电子邮件',
-      address: '地址'
+      address: '地址',
+      callNow: '立即致电',
+      sendEmail: '发送邮件',
+      viewMap: '在 Google 地图中打开'
     },
     footer: {
       description: '以专业的触感和室内设计和建筑的最新创新实现您的梦想空间。',
@@ -899,7 +908,10 @@ export const translations = {
       title: 'Contáctanos',
       phone: 'Teléfono',
       email: 'Correo Electrónico',
-      address: 'Dirección'
+      address: 'Dirección',
+      callNow: 'Llamar ahora',
+      sendEmail: 'Enviar correo',
+      viewMap: 'Abrir en Google Maps'
     },
     footer: {
       description: 'Realizando tu espacio soñado con toque profesional y las últimas innovaciones en diseño de interiores y arquitectura.',

@@ -324,13 +324,6 @@ function Portfolio() {
                                     <span>{item.awards.length}</span>
                                   </div>
                                 )}
-                                {(item.clientRating && item.clientRating > 0) && (
-                                  <div className="portfolio-rating">
-                                    {[...Array(5)].map((_, i) => (
-                                      <span key={i} className={`star ${i < (item.clientRating || 0) ? 'filled' : ''}`}>★</span>
-                                    ))}
-                                  </div>
-                                )}
                               </div>
                               <div className="portfolio-card-info-carousel">
                                 <h4 className="portfolio-card-title">{item.title}</h4>
@@ -442,13 +435,6 @@ function Portfolio() {
                         <div className="portfolio-award-badge-unique">
                           <Award size={16} />
                           <span>{item.awards.length}</span>
-                        </div>
-                      )}
-                      {(item.clientRating && item.clientRating > 0) && (
-                        <div className="portfolio-rating">
-                          {[...Array(5)].map((_, i) => (
-                            <span key={i} className={`star ${i < (item.clientRating || 0) ? 'filled' : ''}`}>★</span>
-                          ))}
                         </div>
                       )}
                     </div>
@@ -579,14 +565,6 @@ function Portfolio() {
                 <div className="modal-header-unique">
                   <div className="modal-category-unique">{selectedItem.category}</div>
                   <h2 className="modal-title-unique">{selectedItem.title}</h2>
-                  {selectedItem.clientRating != null && selectedItem.clientRating > 0 && (
-                    <div className="modal-rating">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i} className={`star ${i < selectedItem.clientRating ? 'filled' : ''}`}>★</span>
-                      ))}
-                      <span className="rating-text">({selectedItem.clientRating}/5)</span>
-                    </div>
-                  )}
                   <div className="modal-meta-unique">
                     <div className="meta-item">
                       <MapPin size={16} />
