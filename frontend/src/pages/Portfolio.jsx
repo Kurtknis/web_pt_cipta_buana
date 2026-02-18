@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { Search, Filter, Eye, ExternalLink, Calendar, MapPin, Award, ChevronLeft, ChevronRight, X, Play, Grid, List } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { portfolioItems } from '../content/portfolioContent';
@@ -14,7 +14,6 @@ function Portfolio() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [viewMode, setViewMode] = useState('carousel'); // 'grid' or 'carousel'
   const [carouselIndex, setCarouselIndex] = useState({});
-  const carouselRefs = useRef({});
 
   // Touch/swipe handling
   const [touchStart, setTouchStart] = useState(null);
@@ -36,7 +35,8 @@ function Portfolio() {
       }
     });
     return list;
-  }, [portfolioItems]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- portfolioItems from module scope
+  }, []);
 
   const filteredItems = useMemo(() => {
     return portfolioItems.filter(item => {
@@ -56,7 +56,7 @@ function Portfolio() {
       grouped[cat.id] = portfolioItems.filter(item => item.category === cat.id);
     });
     return grouped;
-  }, [portfolioItems]);
+  }, [categories]);
 
   // Carousel navigation functions
   const nextSlide = (category) => {
@@ -127,11 +127,6 @@ function Portfolio() {
     setGalleryImages([]);
     setCurrentImageIndex(0);
   };
-
-  // Reset image index when opening a new portfolio item
-  useEffect(() => {
-    if (selectedItem) setCurrentImageIndex(0);
-  }, [selectedItem?.id]);
 
   // Close modal on Escape key
   const handleKeyDown = useCallback((e) => {
@@ -272,14 +267,14 @@ function Portfolio() {
                       onTouchEnd={() => onTouchEnd(category.id)}
                     >
                       <div className="carousel-slides">
-                        {visibleItems.map((item, index) => (
+                        {visibleItems.map((item) => (
                           <div key={item.id} className="carousel-slide">
                             <div
                               className="portfolio-card-carousel"
                               role="button"
                               tabIndex={0}
-                              onClick={() => setSelectedItem(item)}
-                              onKeyDown={(e) => { if (e.key === 'Enter') setSelectedItem(item); }}
+                              onClick={() => { setSelectedItem(item); setCurrentImageIndex(0); }}
+                              onKeyDown={(e) => { if (e.key === 'Enter') { setSelectedItem(item); setCurrentImageIndex(0); } }}
                             >
                               <div className="portfolio-image-container-carousel">
                                 <img src={item.images[0]} alt={`${item.title} - Proyek PT Cipta Kreasi Buana`} loading="lazy" />
@@ -310,7 +305,7 @@ function Portfolio() {
                                     </button>
                                     <button 
                                       className="portfolio-action-btn detail-btn"
-                                      onClick={(e) => { e.stopPropagation(); setSelectedItem(item); }}
+                                      onClick={(e) => { e.stopPropagation(); setSelectedItem(item); setCurrentImageIndex(0); }}
                                       title={t('portfolio.detail')}
                                     >
                                       <Eye size={18} />
@@ -391,8 +386,8 @@ function Portfolio() {
                     className={`portfolio-card-unique ${index % 3 === 1 ? 'featured' : ''}`}
                     role="button"
                     tabIndex={0}
-                    onClick={() => setSelectedItem(item)}
-                    onKeyDown={(e) => { if (e.key === 'Enter') setSelectedItem(item); }}
+                    onClick={() => { setSelectedItem(item); setCurrentImageIndex(0); }}
+                    onKeyDown={(e) => { if (e.key === 'Enter') { setSelectedItem(item); setCurrentImageIndex(0); } }}
                   >
                     <div className="portfolio-image-container-unique">
                       <img src={item.images[0]} alt={`${item.title} - Proyek PT Cipta Kreasi Buana`} loading="lazy" />
@@ -423,7 +418,7 @@ function Portfolio() {
                           </button>
                           <button 
                             className="portfolio-action-btn detail-btn"
-                            onClick={(e) => { e.stopPropagation(); setSelectedItem(item); }}
+                            onClick={(e) => { e.stopPropagation(); setSelectedItem(item); setCurrentImageIndex(0); }}
                             title={t('portfolio.detail')}
                           >
                             <Eye size={18} />

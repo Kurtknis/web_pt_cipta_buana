@@ -1,10 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Search, X, Filter, Heart, ShoppingCart, Eye } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
 import '../App.css';
 
 function Furniture() {
-  const { t } = useLanguage();
   const [selectedItem, setSelectedItem] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -150,6 +148,7 @@ function Furniture() {
       const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- furnitureItems is static list
   }, [searchTerm, selectedCategory]);
 
   return (

@@ -278,80 +278,55 @@ function HomeSimple() {
         </div>
       </section>
 
-      {/* Portfolio Detail Modal */}
+      {/* Portfolio Detail Modal - Interior design style with X close top-right */}
       {portfolioDetail && (
         <div
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', zIndex: 9999,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            padding: '1rem', overflowY: 'auto'
-          }}
+          className="landing-portfolio-modal-overlay"
           onClick={closeModal}
           role="dialog"
           aria-modal="true"
           aria-label="Detail portfolio"
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: 'white', borderRadius: '16px', maxWidth: '900px', width: '100%',
-              overflow: 'hidden', boxShadow: '0 25px 50px rgba(0,0,0,0.3)', maxHeight: '90vh', overflowY: 'auto'
-            }}
-          >
-            <div style={{ position: 'relative' }}>
-              <button
-                onClick={closeModal}
-                style={{
-                  position: 'absolute', top: '1rem', right: '1rem', zIndex: 10,
-                  width: '40px', height: '40px', borderRadius: '50%', border: 'none',
-                  background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: '1.5rem',
-                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1
-                }}
-                aria-label="Tutup"
-              >
-                <X size={24} />
-              </button>
-              <div style={{ height: '320px', background: '#1a1a1a', position: 'relative' }}>
-                <img
-                  src={(portfolioDetail.images || [portfolioDetail.image])[detailImageIndex] || portfolioDetail.image}
-                  alt={portfolioDetail.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                {portfolioDetail.images && portfolioDetail.images.length > 1 && (
-                  <div style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '0.5rem' }}>
-                    {portfolioDetail.images.map((img, i) => (
-                      <button
-                        key={i}
-                        onClick={(e) => { e.stopPropagation(); setDetailImageIndex(i); }}
-                        style={{
-                          width: '48px', height: '32px', borderRadius: '4px', border: detailImageIndex === i ? '2px solid #f5a623' : '2px solid rgba(255,255,255,0.5)',
-                          overflow: 'hidden', padding: 0, cursor: 'pointer', background: 'rgba(0,0,0,0.3)'
-                        }}
-                      >
-                        <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div style={{ padding: '2rem' }}>
-                <span style={{ fontSize: '0.75rem', color: '#f5a623', fontWeight: '600', textTransform: 'uppercase' }}>{portfolioDetail.category}</span>
-                <h2 style={{ fontSize: '1.75rem', color: '#0f2744', margin: '0.5rem 0 1rem' }}>{portfolioDetail.title}</h2>
-                <p style={{ color: '#2c2c2c', lineHeight: 1.7, fontSize: '1rem' }}>{portfolioDetail.description}</p>
-                <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  <Link
-                    to="/konsultasi"
-                    style={{ padding: '0.75rem 1.5rem', backgroundColor: '#f5a623', color: '#0a0a0a', borderRadius: '50px', textDecoration: 'none', fontWeight: '600' }}
-                  >
-                    {t('home.freeConsultation')}
-                  </Link>
-                  <Link
-                    to="/portfolio"
-                    style={{ padding: '0.75rem 1.5rem', backgroundColor: 'transparent', color: '#0f2744', border: '2px solid #0f2744', borderRadius: '50px', textDecoration: 'none', fontWeight: '600' }}
-                  >
-                    {t('portfolio.viewAll')}
-                  </Link>
+          <div className="landing-portfolio-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="landing-portfolio-modal-close"
+              onClick={closeModal}
+              aria-label="Tutup"
+            >
+              <X size={22} strokeWidth={2.5} />
+            </button>
+            <div className="landing-portfolio-modal-image-wrap">
+              <img
+                src={(portfolioDetail.images || [portfolioDetail.image])[detailImageIndex] || portfolioDetail.image}
+                alt={portfolioDetail.title}
+              />
+              {portfolioDetail.images && portfolioDetail.images.length > 1 && (
+                <div className="landing-portfolio-modal-thumbs">
+                  {portfolioDetail.images.map((img, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); setDetailImageIndex(i); }}
+                      className={detailImageIndex === i ? 'active' : ''}
+                    >
+                      <img src={img} alt="" />
+                    </button>
+                  ))}
                 </div>
+              )}
+            </div>
+            <div className="landing-portfolio-modal-body">
+              <span className="landing-portfolio-modal-cat">{portfolioDetail.category}</span>
+              <h2 className="landing-portfolio-modal-title">{portfolioDetail.title}</h2>
+              <p className="landing-portfolio-modal-desc">{portfolioDetail.description}</p>
+              <div className="landing-portfolio-modal-actions">
+                <Link to="/konsultasi" className="landing-portfolio-modal-btn primary">
+                  {t('home.freeConsultation')}
+                </Link>
+                <Link to="/portfolio" className="landing-portfolio-modal-btn secondary">
+                  {t('portfolio.viewAll')}
+                </Link>
               </div>
             </div>
           </div>
