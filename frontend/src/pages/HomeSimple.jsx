@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronRight, X, Target, Compass, ListChecks, Phone, Mail, MapPin } from 'lucide-react';
+import { ChevronRight, X, Target, Compass, ListChecks, Phone, Mail, MapPin, ArrowRight, Ruler, PaintBucket, Hammer } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { youtubeVideos, homePortfolioItems } from '../content/homeContent';
@@ -44,26 +44,88 @@ function HomeSimple() {
 
   return (
     <>
-      {/* Hero Section - Landing Premium */}
+      {/* Hero Section - Landing Premium with Services */}
       <section className="landing-hero">
         <div className="landing-hero-overlay" />
-        <div className="landing-hero-content">
-          <span className="landing-hero-badge">Interior & Desain</span>
-          <h1 className="landing-hero-title">{t('home.heroTitle')}</h1>
-          <p className="landing-hero-subtitle">{t('home.heroSubtitle')}</p>
-          <div className="landing-hero-buttons">
-            <Link to="/konsultasi" className="landing-btn landing-btn-primary">
-              {t('home.freeConsultation')} <ChevronRight size={20} />
-            </Link>
-            <Link to="/layanan" className="landing-btn landing-btn-secondary">
-              {t('services.title')}
+        <div className="landing-hero-grain" />
+
+        <div className="landing-hero-accent-bar" />
+
+        <div className="landing-hero-split">
+          <div className="landing-hero-content">
+            <span className="landing-hero-badge">
+              <span className="landing-hero-badge-dot" />
+              Interior & Architecture Studio
+            </span>
+            <h1 className="landing-hero-title">{t('home.heroTitle')}</h1>
+            <p className="landing-hero-subtitle">{t('home.heroSubtitle')}</p>
+
+            <div className="landing-hero-buttons">
+              <Link to="/portfolio" className="landing-btn landing-btn-primary">
+                {t('portfolio.viewAll')} <ArrowRight size={18} />
+              </Link>
+              <Link to="/harga" className="landing-btn landing-btn-secondary">
+                {t('pricing.title')}
+              </Link>
+            </div>
+
+            <Link to="/konsultasi" className="hero-cta-box">
+              <div className="hero-cta-box-left">
+                <span className="hero-cta-box-label">{t('nav.consultation')}</span>
+                <span className="hero-cta-box-phone">
+                  <Phone size={14} /> {contactInfo.phone}
+                </span>
+              </div>
+              <span className="hero-cta-box-arrow">
+                <ArrowRight size={18} />
+              </span>
             </Link>
           </div>
-          <a href="#about" className="landing-hero-scroll" aria-label="Scroll ke bawah">
-            <span className="landing-hero-scroll-line" />
-            <span className="landing-hero-scroll-text">Scroll</span>
-          </a>
+
+          <div className="landing-hero-services">
+            <Link to="/layanan" className="hero-service-card hero-service-card--interior">
+              <span className="hero-service-num">01</span>
+              <span className="hero-service-icon hero-service-icon--interior">
+                <PaintBucket size={22} />
+              </span>
+              <div className="hero-service-text">
+                <h3>{t('services.designInterior')}</h3>
+                <p>{t('services.designInteriorLong')}</p>
+              </div>
+              <span className="hero-service-cta">
+                {t('services.learnMore')} <ArrowRight size={14} />
+              </span>
+            </Link>
+            <Link to="/layanan" className="hero-service-card hero-service-card--arch">
+              <span className="hero-service-num">02</span>
+              <span className="hero-service-icon hero-service-icon--arch">
+                <Ruler size={22} />
+              </span>
+              <div className="hero-service-text">
+                <h3>{t('services.architecture')}</h3>
+                <p>{t('services.architectureLong')}</p>
+              </div>
+              <span className="hero-service-cta">
+                {t('services.learnMore')} <ArrowRight size={14} />
+              </span>
+            </Link>
+            <Link to="/layanan" className="hero-service-card hero-service-card--renovation">
+              <span className="hero-service-num">03</span>
+              <span className="hero-service-icon hero-service-icon--renovation">
+                <Hammer size={22} />
+              </span>
+              <div className="hero-service-text">
+                <h3>{t('services.renovation')}</h3>
+                <p>{t('services.renovationLong')}</p>
+              </div>
+              <span className="hero-service-cta">
+                {t('services.learnMore')} <ArrowRight size={14} />
+              </span>
+            </Link>
+          </div>
         </div>
+
+        <div className="landing-hero-bottom-fade" />
       </section>
 
       {/* Fade dot divider: hero → visi misi */}
@@ -213,33 +275,8 @@ function HomeSimple() {
         </div>
       </section>
 
-      {/* Fade dot divider: pricing → video */}
+      {/* Fade dot divider: pricing → contact */}
       <div className="dot-divider dot-divider--beige-shift" />
-
-      {/* Video Kami Section - Landing */}
-      <section id="videos" className="landing-section landing-videos videos-section">
-        <div className="landing-container">
-          <span className="landing-badge">{t('home.videoTitle')}</span>
-          <h2 className="landing-title">{t('home.videoSubtitle')}</h2>
-          <div className="videos-grid landing-videos-grid">
-            {youtubeVideos.map((videoUrl, index) => (
-              <div key={index} className="video-item">
-                <iframe
-                  src={getEmbedUrl(videoUrl)}
-                  title={`${t('home.videoTitle')} ${index + 1}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Fade dot divider: video → contact */}
-      <div className="dot-divider dot-divider--beige-shift-alt" />
 
       {/* Contact Section - Hubungi Kami */}
       <section className="contact-section-simple">
@@ -274,6 +311,31 @@ function HomeSimple() {
               <p className="contact-simple-card-value contact-simple-card-value--small">{contactInfo.address}</p>
               <span className="contact-simple-card-cta">{t('contact.viewMap')} →</span>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Fade dot divider: contact → video */}
+      <div className="dot-divider dot-divider--beige-shift-alt" />
+
+      {/* Video Dokumentasi - Paling bawah, 3 video siap putar di dalam website */}
+      <section id="videos" className="landing-section landing-videos videos-section">
+        <div className="landing-container">
+          <span className="landing-badge">{t('home.videoTitle')}</span>
+          <h2 className="landing-title">{t('home.videoSubtitle')}</h2>
+          <div className="videos-grid landing-videos-grid">
+            {youtubeVideos.map((videoUrl, index) => (
+              <div key={index} className="video-item">
+                <iframe
+                  src={getEmbedUrl(videoUrl) + '?rel=0'}
+                  title={`${t('home.videoTitle')} ${index + 1}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
