@@ -1,17 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import ConsultationViewSet, ProjectViewSet, ClientViewSet, PriceViewSet, ContactViewSet, ImageProjectViewSet, HomeComparisonImageViewSet, HomePortfolioViewSet
+from .views import ConsultationViewSet
 
 router = DefaultRouter()
 router.register(r'consultation', ConsultationViewSet)
-router.register(r'project', ProjectViewSet)
-router.register(r'client', ClientViewSet)
-router.register(r'price', PriceViewSet)
-router.register(r'contact', ContactViewSet)
-router.register(r'image_project', ImageProjectViewSet)
-router.register(r'home_comparison', HomeComparisonImageViewSet)
-router.register(r'home_portfolio', HomePortfolioViewSet)
 
 
 urlpatterns = [
