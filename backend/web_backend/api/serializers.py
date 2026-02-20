@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Konsultasi, Proyek, GambarProyek, Biaya, Klien, Kontak
+from .models import Konsultasi, Proyek, Gambar, GambarProyek, Biaya, Klien, Kontak
 import os
 
 class KonsultasiSerializers(serializers.ModelSerializer):
@@ -25,6 +25,11 @@ class KonsultasiSerializers(serializers.ModelSerializer):
 class ProyekSerializers(serializers.ModelSerializer):
     class Meta:
         model = Proyek
+        fields = '__all__'
+        
+class GambarSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Gambar
         fields = '__all__'
         
 class GambarProyekSerializers(serializers.ModelSerializer):

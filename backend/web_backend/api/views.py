@@ -1,5 +1,5 @@
-from .models import Konsultasi, Proyek, GambarProyek, Biaya, Klien, Kontak
-from .serializers import KonsultasiSerializers, ProyekSerializers, GambarProyekSerializers, BiayaSerializers, KlienSerializers, KontakSerializers
+from .models import Konsultasi, Proyek, GambarProyek, Biaya, Klien, Kontak, Gambar
+from .serializers import KonsultasiSerializers, ProyekSerializers, GambarSerializers, GambarProyekSerializers, BiayaSerializers, KlienSerializers, KontakSerializers
 from django.core.cache import cache
 from rest_framework.response import Response
 from rest_framework import status
@@ -59,7 +59,50 @@ class ProyekViewSet(viewsets.ModelViewSet):
         cache.delete('proyek')
         return response
         
+class GambarViewSet(viewsets.ModelViewSet):
+    queryset = Gambar.objects.all()
+    serializer_class = GambarSerializers
     
+    def list(self, request, *args, **kwargs):
+        data = cache.get('gambar_list')
+        if data:
+            return Response(data)
+        response = super().list(request, *args, **kwargs)
+        cache.set('gambar_list',response.data, timeout=3600*24*7)
+        return response
+    
+    def retrieve(self, request, *args, **kwargs):
+        data = cache.get('gambar')
+        if data:
+            return Response(data)
+        response = super().list(request, *args, **kwargs)
+        cache.set('gambar',response.data, timeout=3600*24*7)
+        return response
+    
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        cache.delete('gambar_list')
+        cache.delete('gambar')
+        return response
+
+    def update(self, request, *args, **kwargs):
+        response = super().update(request, *args, **kwargs)
+        cache.delete('gambar_list')
+        cache.delete('gambar')
+        return response
+
+    def partial_update(self, request, *args, **kwargs):
+        response = super().partial_update(request, *args, **kwargs)
+        cache.delete('gambar_list')
+        cache.delete('gambar')
+        return response
+
+    def destroy(self, request, *args, **kwargs):
+        response = super().destroy(request, *args, **kwargs)
+        cache.delete('gambar_list')
+        cache.delete('gambar')
+        return response
+
 class GambarProyekViewSet(viewsets.ModelViewSet):
     queryset = GambarProyek.objects.all()
     serializer_class = GambarProyekSerializers
