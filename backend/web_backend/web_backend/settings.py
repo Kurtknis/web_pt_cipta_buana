@@ -67,8 +67,8 @@ if DEBUG != 'True':
     REST_FRAMEWORK = {
         'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
         'DEFAULT_PARSER_CLASSES': ['rest_framework.parsers.JSONParser'],
-        'DEFAULT_AUTHENTICATION_CLASSES': ['api.authentications.APIKeyAuthentication'],
-        'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
+        'DEFAULT_AUTHENTICATION_CLASSES': ['api.authentications.APIKeyOrReadOnlyAuthentication'],
+        'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
         'PAGE_SIZE': 10,
     }
@@ -122,9 +122,19 @@ WSGI_APPLICATION = 'web_backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-# Railway: prefer DATABASE_PUBLIC_URL (private DATABASE_URL uses postgres.railway.internal
-# which may not resolve in all deployment contexts).
 DATABASES = { "default": dj_database_url.config( default=env("DATABASE_URL") ) }
+
+# Cache
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": env("REDIS_URL"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
