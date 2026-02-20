@@ -52,13 +52,12 @@ function Navbar() {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="nav-content">
-          <div className="logo">
+          <div className="logo logo-text-only">
             <Link to="/" className="logo-link">
-              <img src="/ptkreasi.jpg" alt="PT Cipta Kreasi Buana" className="logo-image" />
-              <h1>CIPTA BUANA KREASI</h1>
+              <span className="logo-brand">CIPTA BUANA KREASI</span>
             </Link>
           </div>
-          
+
           <div className="nav-right">
             <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
               <li><Link to="/" className={isActive('/') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>{t('nav.home')}</Link></li>
@@ -70,8 +69,8 @@ function Navbar() {
             </ul>
 
             <div className="language-selector">
-              <button 
-                className="language-button" 
+              <button
+                className="language-button"
                 onClick={() => setIsLangOpen(!isLangOpen)}
                 aria-label="Select Language"
               >
@@ -82,13 +81,13 @@ function Navbar() {
               {isLangOpen && (
                 <div className="language-dropdown">
                   {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    className={`language-option ${language === lang.code ? 'active' : ''}`}
-                    onClick={() => handleLanguageChange(lang.code)}
-                  >
-                    <span className="language-name">{lang.name}</span>
-                  </button>
+                    <button
+                      key={lang.code}
+                      className={`language-option ${language === lang.code ? 'active' : ''}`}
+                      onClick={() => handleLanguageChange(lang.code)}
+                    >
+                      <span className="language-name">{lang.name}</span>
+                    </button>
                   ))}
                 </div>
               )}

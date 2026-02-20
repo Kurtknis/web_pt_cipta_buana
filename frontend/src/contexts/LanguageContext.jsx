@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- context exports provider + hook */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations } from '../translations/translations';
 

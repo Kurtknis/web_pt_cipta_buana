@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { priceRanges, pricingProjects, pricingCategories } from '../content/pricingPageContent';
-import { Ruler, FileText, ChevronRight } from 'lucide-react';
+import { Ruler, FileText, ChevronRight, MapPin, ArrowRight } from 'lucide-react';
 import '../App.css';
 
 function Pricing() {
@@ -84,20 +84,26 @@ function Pricing() {
                     alt={`${project.title} - ${project.location}`}
                     loading="lazy"
                   />
+                  <div className="pricing-project-image-overlay" />
                   <span className="pricing-project-category">{project.category}</span>
                 </div>
                 <div className="pricing-project-info">
                   <h3 className="pricing-project-title">{project.title}</h3>
                   <p className="pricing-project-meta">
-                    {project.location}
-                    {project.duration && project.duration !== '-' && ` · ${project.duration}`}
+                    <MapPin size={14} aria-hidden />
+                    <span>
+                      {project.location}
+                      {project.duration && project.duration !== '-' && ` · ${project.duration}`}
+                    </span>
                   </p>
-                  <div className="pricing-project-price">{project.price}</div>
                   {project.description && (
                     <p className="pricing-project-desc">{project.description}</p>
                   )}
-                  <Link to="/konsultasi" className="btn btn-primary pricing-consult-btn">
-                    {t('pricing.consult')} <ChevronRight size={18} />
+                  <div className="pricing-project-price-row">
+                    <div className="pricing-project-price">{project.price}</div>
+                  </div>
+                  <Link to="/konsultasi" className="pricing-consult-btn">
+                    {t('pricing.consult')} <ArrowRight size={16} />
                   </Link>
                 </div>
               </article>

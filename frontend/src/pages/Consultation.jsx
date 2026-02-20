@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Send, CheckCircle, Clock, Users, Star, Award, MessageCircle, Calendar, DollarSign, User, Building } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { submitConsultation } from '../services/api';
 import { checkForbiddenWords } from '../utils/forbiddenWords';
 import '../App.css';
@@ -10,7 +9,6 @@ const ADDRESS = 'Jl. Cendana Residence Blok A3 No.3, Serua, Kec. Ciputat, Kota T
 const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(ADDRESS)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 
 function Consultation() {
-  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -125,11 +123,14 @@ function Consultation() {
   ];
 
   const budgetRanges = [
-    { value: 'under-50', label: 'Di bawah Rp 50 juta', range: '< 50 jt' },
-    { value: '50-100', label: 'Rp 50 - 100 juta', range: '50-100 jt' },
-    { value: '100-200', label: 'Rp 100 - 200 juta', range: '100-200 jt' },
-    { value: '200-500', label: 'Rp 200 - 500 juta', range: '200-500 jt' },
-    { value: 'above-500', label: 'Di atas Rp 500 juta', range: '> 500 jt' }
+    { value: '100k-300k', label: 'Rp 100.000 - Rp 300.000', range: '100 rb - 300 rb' },
+    { value: '300k-500k', label: 'Rp 300.000 - Rp 500.000', range: '300 rb - 500 rb' },
+    { value: '500k-1jt', label: 'Rp 500.000 - Rp 1.000.000', range: '500 rb - 1 jt' },
+    { value: '1jt-3jt', label: 'Rp 1.000.000 - Rp 3.000.000', range: '1 - 3 jt' },
+    { value: '3jt-5jt', label: 'Rp 3.000.000 - Rp 5.000.000', range: '3 - 5 jt' },
+    { value: '5jt-10jt', label: 'Rp 5.000.000 - Rp 10.000.000', range: '5 - 10 jt' },
+    { value: '10jt-25jt', label: 'Rp 10.000.000 - Rp 25.000.000', range: '10 - 25 jt' },
+    { value: '25jt-50jt', label: 'Rp 25.000.000 - Rp 50.000.000', range: '25 - 50 jt' }
   ];
 
   const timelineOptions = [
@@ -293,10 +294,11 @@ function Consultation() {
                       </div>
                     </div>
 
-                    <div className="form-group-enhanced">
+                    <div className="form-group-enhanced contact-method-group">
                       <label>Metode Kontak Preferensi</label>
-                      <div className="radio-group">
-                        <label className="radio-option">
+                      <p className="contact-method-hint">Pilih cara kami menghubungi Anda</p>
+                      <div className="contact-method-options">
+                        <label className={`contact-method-option ${formData.preferredContact === 'phone' ? 'selected' : ''}`}>
                           <input
                             type="radio"
                             name="preferredContact"
@@ -304,11 +306,15 @@ function Consultation() {
                             checked={formData.preferredContact === 'phone'}
                             onChange={handleInputChange}
                           />
-                          <span className="radio-custom"></span>
-                          <Phone size={16} />
-                          Telepon
+                          <div className="contact-method-card">
+                            <div className="contact-method-icon">
+                              <Phone size={28} />
+                            </div>
+                            <span className="contact-method-label">Telepon</span>
+                            <span className="contact-method-desc">Hubungi via panggilan</span>
+                          </div>
                         </label>
-                        <label className="radio-option">
+                        <label className={`contact-method-option ${formData.preferredContact === 'email' ? 'selected' : ''}`}>
                           <input
                             type="radio"
                             name="preferredContact"
@@ -316,9 +322,13 @@ function Consultation() {
                             checked={formData.preferredContact === 'email'}
                             onChange={handleInputChange}
                           />
-                          <span className="radio-custom"></span>
-                          <Mail size={16} />
-                          Email
+                          <div className="contact-method-card">
+                            <div className="contact-method-icon">
+                              <Mail size={28} />
+                            </div>
+                            <span className="contact-method-label">Email</span>
+                            <span className="contact-method-desc">Kirim ke email Anda</span>
+                          </div>
                         </label>
                       </div>
                     </div>

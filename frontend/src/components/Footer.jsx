@@ -15,7 +15,7 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>PT Cipta Kreasi Buana</h3>
+            <h3>PT CIPTA KREASI BUANA</h3>
             <p>{t('footer.description')}</p>
             <div className="social-links">
               <a href="#" aria-label="Facebook"><Facebook size={20} /></a>
