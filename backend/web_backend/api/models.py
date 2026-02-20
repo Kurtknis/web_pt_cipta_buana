@@ -24,6 +24,8 @@ class Konsultasi(models.Model):
 class Gambar(models.Model):
     gambar = models.ImageField(upload_to='gambar/')
     alt = models.CharField(blank=True, null=True)
+    kategori = models.CharField(default='-')
+    deskripsi = models.TextField(blank=True, null=True)
     
     class Meta:
         verbose_name = 'Data Konsultasi'
@@ -55,6 +57,9 @@ class Proyek(models.Model):
 class GambarProyek(models.Model):
     proyek = models.ForeignKey(Proyek, on_delete=models.CASCADE, related_name='gambar')
     gambar = models.ImageField(upload_to='gambar_proyek/')
+    alt = models.CharField(blank=True, null=True)
+    kategori = models.CharField(default='-')
+    deskripsi = models.TextField(blank=True, null=True)
     
     class Meta:
         verbose_name = 'Galeri Proyek'
