@@ -1,4 +1,3 @@
-from json import JSONEncoder
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -15,6 +14,7 @@ class Consultation(models.Model):
     submitted_date = models.DateTimeField(auto_now_add=True)
     
     class Meta:
+        app_label = 'API'
         verbose_name = 'Consultation Data'
         verbose_name_plural = verbose_name
         ordering = ['-submitted_date']
@@ -29,6 +29,7 @@ class HomePortfolio(models.Model):
     description = models.TextField(blank=True, null=True)
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Home Portfolio'
         verbose_name_plural = verbose_name
     
@@ -47,6 +48,7 @@ class HomeComparisonImage(models.Model):
     description = models.TextField(blank=True, null=True, default='-')
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Home Comparison Image'
         verbose_name_plural = verbose_name
         
@@ -70,6 +72,7 @@ class Project(models.Model):
     clientRating = models.IntegerField(blank=True, null=True, default='-')
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Project List'
         verbose_name_plural = verbose_name
         
@@ -82,6 +85,7 @@ class ImageProject(models.Model):
     alt = models.CharField(blank=True, null=True)
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Project Gallery'
         verbose_name_plural = verbose_name
         
@@ -95,6 +99,7 @@ class Furniture(models.Model):
     price = models.CharField(blank=True, null=True, default='-')
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Furniture List'
         verbose_name_plural = verbose_name
         
@@ -108,6 +113,7 @@ class Price(models.Model):
     description = models.TextField(blank=True, null=True, default='-')
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Price List (per m²)'
         verbose_name_plural = verbose_name
         
@@ -125,6 +131,7 @@ class Client(models.Model):
     
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Client List'
         verbose_name_plural = verbose_name
         
@@ -138,6 +145,7 @@ class Contact(models.Model):
     url = models.URLField(blank=True, null=True)
     
     class Meta:
+        app_label = 'Page'
         verbose_name = 'Contact'
         verbose_name_plural = verbose_name
         
