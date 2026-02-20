@@ -33,6 +33,7 @@ export const translations = {
     },
     // Home
     home: {
+      heroBadge: 'Design Interior & Arsitektur',
       heroTitle: 'Wujudkan Ruang Impian Anda',
       heroSubtitle: 'Perusahaan Kami PT Cipta Kreasi Buana lahir dari ambisi untuk mengubah cara ruang diciptakan dan dirasakan. Dengan pengalaman lebih dari lima tahun, kami menghadirkan desain interior yang strategis, fungsional, dan visioner untuk hunian, perkantoran, properti komersial, hingga kawasan industri. Kami percaya ruang yang dirancang dengan tepat mampu mendorong pertumbuhan, efisiensi, dan nilai bisnis.',
       freeConsultation: 'Konsultasi Gratis',
@@ -294,6 +295,7 @@ export const translations = {
       back: 'Back'
     },
     home: {
+      heroBadge: 'Interior Design & Architecture',
       heroTitle: 'Realize Your Dream Space',
       heroSubtitle: 'Specialist in Interior Design, Architecture & Professional Building Contractor',
       freeConsultation: 'Free Consultation',
@@ -539,6 +541,7 @@ export const translations = {
       back: '返回'
     },
     home: {
+      heroBadge: '室内设计与建筑',
       heroTitle: '实现您的梦想空间',
       heroSubtitle: '室内设计、建筑和专业建筑承包商专家',
       freeConsultation: '免费咨询',
@@ -775,6 +778,7 @@ export const translations = {
       back: 'Atrás'
     },
     home: {
+      heroBadge: 'Diseño de Interiores y Arquitectura',
       heroTitle: 'Realiza Tu Espacio Soñado',
       heroSubtitle: 'Especialista en Diseño de Interiores, Arquitectura y Contratista Profesional de Construcción',
       freeConsultation: 'Consulta Gratis',

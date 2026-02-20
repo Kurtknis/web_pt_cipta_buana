@@ -733,8 +733,8 @@ html {
   gap: 1rem;
   margin-top: 1.5rem;
   padding: 0.9rem 1.15rem;
-  background: rgba(10,10,10,0.7);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #b45309;
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 14px;
   text-decoration: none;
   color: inherit;
@@ -742,13 +742,14 @@ html {
   opacity: 0;
   animation: landingFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards;
   max-width: 320px;
+  box-shadow: 0 4px 20px rgba(180,83,9,0.35), 0 0 0 1px rgba(0,0,0,0.1);
 }
 
 .hero-cta-box:hover {
-  background: rgba(15,15,15,0.85);
-  border-color: rgba(255,255,255,0.15);
+  background: #b45309;
+  border-color: rgba(255,255,255,0.3);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 28px rgba(180,83,9,0.5), 0 0 0 1px rgba(255,255,255,0.1);
 }
 
 .hero-cta-box-left {
@@ -763,7 +764,7 @@ html {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--orange-light, #f5c87a);
+  color: rgba(255,255,255,0.95);
 }
 
 .hero-cta-box-phone {
@@ -777,15 +778,15 @@ html {
 }
 
 .hero-cta-box-phone svg {
-  color: var(--orange-light, #f5c87a);
+  color: rgba(255,255,255,0.9);
 }
 
 .hero-cta-box-arrow {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--orange, #f5a623);
-  color: #0a0a0a;
+  background: rgba(255,255,255,0.95);
+  color: #b45309;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -794,7 +795,8 @@ html {
 }
 
 .hero-cta-box:hover .hero-cta-box-arrow {
-  background: var(--orange-light, #f5c87a);
+  background: #fff;
+  color: #b45309;
   transform: translateX(3px);
 }
 
@@ -915,10 +917,10 @@ html {
 }
 
 .hero-service-card:hover {
-  background: rgba(15,15,15,0.85);
-  border-color: rgba(255,255,255,0.15);
+  background: #b45309;
+  border-color: rgba(255,255,255,0.3);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 28px rgba(180,83,9,0.5), 0 0 0 1px rgba(255,255,255,0.1);
 }
 
 .hero-service-num {
@@ -926,9 +928,9 @@ html {
   top: 0.55rem;
   right: 0.7rem;
   font-size: 0.55rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.35);
   font-family: monospace;
 }
 
@@ -972,15 +974,17 @@ html {
 
 .hero-service-text h3 {
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 900;
   color: #fff;
   margin: 0 0 0.25rem;
   line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 .hero-service-text p {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.55);
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
   margin: 0;
   line-height: 1.45;
 }
@@ -991,8 +995,8 @@ html {
   gap: 0.35rem;
   margin-top: 0.4rem;
   font-size: 0.72rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.3);
+  font-weight: 800;
+  color: rgba(255,255,255,0.95);
   transition: all 0.3s ease;
 }
 

@@ -55,7 +55,7 @@ function HomeSimple() {
           <div className="landing-hero-content">
             <span className="landing-hero-badge">
               <span className="landing-hero-badge-dot" />
-              Interior & Architecture Studio
+              {t('home.heroBadge')}
             </span>
             <h1 className="landing-hero-title">{t('home.heroTitle')}</h1>
             <p className="landing-hero-subtitle">{t('home.heroSubtitle')}</p>
