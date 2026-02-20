@@ -1,103 +1,145 @@
+from json import JSONEncoder
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
-class Konsultasi(models.Model):
-    nama = models.CharField(max_length=100, default='N/A')
+class Consultation(models.Model):
+    name = models.CharField(max_length=100, default='N/A')
     email = models.EmailField(max_length=200, default='N/A')
-    kontak = models.CharField(max_length=20, default='N/A')
-    proyek = models.CharField(max_length=50, default='N/A')
+    contact = models.CharField(max_length=20, default='N/A')
+    project = models.CharField(max_length=50, default='N/A')
     budget = models.CharField(max_length=50, default='N/A')
-    timeline_proyek = models.CharField(max_length=50, default='N/A')
-    deskripsi = models.TextField(default='N/A')
-    tanggal_pengiriman_form = models.DateTimeField(auto_now_add=True)
+    timeline = models.CharField(max_length=50, default='N/A')
+    description = models.TextField(default='N/A')
+    submitted_date = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        verbose_name = 'Data Konsultasi'
+        verbose_name = 'Consultation Data'
         verbose_name_plural = verbose_name
-        ordering = ['-tanggal_pengiriman_form']
+        ordering = ['-submitted_date']
         
     def __str__(self):
-        return f'{self.nama} - {self.proyek}'
+        return f'{self.name} - {self.project}'
     
-class Gambar(models.Model):
-    gambar = models.ImageField(upload_to='gambar/')
-    alt = models.CharField(blank=True, null=True)
-    kategori = models.CharField(default='-')
-    deskripsi = models.TextField(blank=True, null=True)
+class HomePortfolio(models.Model):
+    title = models.CharField(blank=True, null=True)
+    category = models.CharField(default='-')
+    image = models.ImageField(upload_to='home_portfolio/')
+    description = models.TextField(blank=True, null=True)
     
     class Meta:
-        verbose_name = 'Data Konsultasi'
+        verbose_name = 'Home Portfolio'
         verbose_name_plural = verbose_name
     
     def save(self, *args, **kwargs):
         if not self.alt:
-            self.alt = f'{self.gambar} Image'
+            self.alt = f'{self.image} Image'
         super().save(*args, **kwargs)
     
     def __str__(self):
-        return f'Gambar {self.alt}'
+        return f'image {self.alt}'
     
-class Proyek(models.Model):
-    judul = models.CharField(max_length=100)
-    lokasi = models.CharField(max_length=100, default='-')
-    tanggal = models.IntegerField(blank=True, null=True, default='-')
-    deskripsi = models.TextField(blank=True, null=True, default='-')
-    harga = models.CharField(blank=True, null=True, default='-')
-    durasi = models.CharField(blank=True, null=True, default='-')
+class HomeComparisonImage(models.Model):
+    before = models.ImageField(upload_to='home_comparison/')
+    after = models.ImageField(upload_to='home_comparison/')
+    title = models.CharField(blank=True, null=True, default='-')
+    description = models.TextField(blank=True, null=True, default='-')
     
     class Meta:
-        verbose_name = 'Daftar Proyek'
+        verbose_name = 'Home Comparison Image'
         verbose_name_plural = verbose_name
         
     def __str__(self):
-        return self.judul
+        return self.title
     
-class GambarProyek(models.Model):
-    proyek = models.ForeignKey(Proyek, on_delete=models.CASCADE, related_name='gambar')
-    gambar = models.ImageField(upload_to='gambar_proyek/')
+class Project(models.Model):
+    title = models.CharField(max_length=100)
+    location = models.CharField(blank=True, null=True, default='-')
+    year = models.IntegerField(blank=True, null=True, default='-')
+    category = models.CharField(blank=True, null=True, default='-')
+    description = models.TextField(blank=True, null=True, default='-')
+    price = models.IntegerField(blank=True, null=True, default='-')
+    duration = models.CharField(blank=True, null=True, default='-')
+    client = models.CharField(blank=True, null=True, default='-')
+    features = models.TextField(blank=True, null=True, default='-')
+    challenges = models.CharField(blank=True, null=True, default='-')
+    solution = models.CharField(blank=True, null=True, default='-')
+    awards = models.TextField(blank=True, null=True, default='-')
+    testimonial = models.CharField(blank=True, null=True, default='-')
+    clientRating = models.IntegerField(blank=True, null=True, default='-')
+    
+    class Meta:
+        verbose_name = 'Project List'
+        verbose_name_plural = verbose_name
+        
+    def __str__(self):
+        return self.title
+    
+class ImageProject(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='image')
+    image = models.ImageField(upload_to='project_image/')
     alt = models.CharField(blank=True, null=True)
-    kategori = models.CharField(default='-')
-    deskripsi = models.TextField(blank=True, null=True)
     
     class Meta:
-        verbose_name = 'Galeri Proyek'
+        verbose_name = 'Project Gallery'
         verbose_name_plural = verbose_name
         
     def __str__(self):
-        return f'Gambar {self.proyek}'
+        return f'image {self.project}'
     
-class Biaya(models.Model):
-    luas = models.CharField(max_length=100)
-    harga = models.CharField(max_length=50)
-    deskripsi = models.TextField(blank=True, null=True, default='-')
+class Furniture(models.Model):
+    title = models.CharField()
+    category = models.CharField(blank=True, null=True, default='-')
+    description = models.TextField(blank=True, null=True, default='-')
+    price = models.CharField(blank=True, null=True, default='-')
     
     class Meta:
-        verbose_name = 'Daftar Harga per meter persegi'
+        verbose_name = 'Furniture List'
         verbose_name_plural = verbose_name
         
     def __str__(self):
-        return f'{self.luas} - {self.harga}'
+        return f'{self.category} - {self.title} - {self.price}'
     
-class Klien(models.Model):
-    nama = models.CharField(max_length=100)
+class Price(models.Model):
+    sqmin = models.IntegerField(blank=True, null=True, default='-')
+    sqmax = models.IntegerField(blank=True, null=True, default='-')
+    price = models.CharField(max_length=50, blank=True, null=True, default='-')
+    description = models.TextField(blank=True, null=True, default='-')
     
     class Meta:
-        verbose_name = 'Daftar Klien'
+        verbose_name = 'Price List (per m²)'
         verbose_name_plural = verbose_name
         
     def __str__(self):
-        return self.nama
+        return f'{self.size} - {self.price}'
     
-class Kontak(models.Model):
-    telepon = PhoneNumberField(max_length=15, blank=True, null=True)
+class Client(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=50, blank=True, null=True, default='-')
+    location = models.CharField(max_length=100, blank=True, null=True, default='-')
+    budget = models.CharField(max_length=50, blank=True, null=True, default='-')
+    project = models.CharField(max_length=100, blank=True, null=True, default='-')
+    rating = models.CharField(max_length=10, blank=True, null=True, default='-')
+    testimonial = models.TextField(blank=True, null=True, default='-')
+    
+    
+    class Meta:
+        verbose_name = 'Client List'
+        verbose_name_plural = verbose_name
+        
+    def __str__(self):
+        return f'{self.nama} - {self.role}'
+    
+class Contact(models.Model):
+    phone = PhoneNumberField(max_length=15, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
-    alamat = models.CharField(blank=True, null=True, max_length=200)
+    address = models.CharField(blank=True, null=True, max_length=200)
+    url = models.URLField(blank=True, null=True)
     
     class Meta:
-        verbose_name = 'Kontak Perusahaan'
+        verbose_name = 'Contact'
         verbose_name_plural = verbose_name
         
     def __str__(self):
-        return f'{self.telepon} - {self.email} - {self.alamat}'
+        return f'{self.phone} - {self.email} - {self.address}'

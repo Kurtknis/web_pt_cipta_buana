@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Konsultasi, Proyek, Gambar, GambarProyek, Biaya, Klien, Kontak
+from .models import Consultation, Project, HomePortfolio, HomeComparisonImage, ImageProject, Furniture, Price, Client, Contact
 import os
 
-class KonsultasiSerializers(serializers.ModelSerializer):
+class ConsultationSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Konsultasi
-        fields = ['nama', 'email', 'kontak', 'proyek', 'budget', 'timeline_proyek', 'deskripsi']
+        model = Consultation
+        fields = ['nama', 'email', 'Contact', 'Project', 'budget', 'timeline_Project', 'deskripsi']
     
     def validate_deskripsi(self, value):
         forbidden_words_file = os.path.join(
@@ -22,32 +22,42 @@ class KonsultasiSerializers(serializers.ModelSerializer):
         
         return value
     
-class ProyekSerializers(serializers.ModelSerializer):
+class ProjectSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Proyek
+        model = Project
         fields = '__all__'
         
-class GambarSerializers(serializers.ModelSerializer):
+class HomePortfolioSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Gambar
+        model = HomePortfolio
         fields = '__all__'
         
-class GambarProyekSerializers(serializers.ModelSerializer):
+class ImageProjectSerializers(serializers.ModelSerializer):
     class Meta:
-        model = GambarProyek
+        model = ImageProject
         fields = '__all__'
         
-class BiayaSerializers(serializers.ModelSerializer):
+class PriceSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Biaya
+        model = Price
         fields = '__all__'
         
-class KlienSerializers(serializers.ModelSerializer):
+class HomeComparisonImageSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Klien
+        model = HomeComparisonImage
         fields = '__all__'
         
-class KontakSerializers(serializers.ModelSerializer):
+class FurnitureSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Kontak
+        model = Furniture
+        fields = '__all__'
+
+class ClientSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Client
+        fields = '__all__'
+        
+class ContactSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
         fields = '__all__'
