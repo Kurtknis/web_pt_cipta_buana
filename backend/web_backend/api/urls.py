@@ -8,9 +8,9 @@ router.register(r'konsultasi', KonsultasiViewSet)
 router.register(r'proyek', ProyekViewSet)
 router.register(r'klien', KlienViewSet)
 router.register(r'Biaya', BiayaViewSet)
-router.register(r'konsultasi', KontakViewSet)
-router.register(r'konsultasi', GambarProyekViewSet)
-router.register(r'konsultasi', GambarViewSet)
+router.register(r'kontak', KontakViewSet)
+router.register(r'gp', GambarProyekViewSet)
+router.register(r'gambar', GambarViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
