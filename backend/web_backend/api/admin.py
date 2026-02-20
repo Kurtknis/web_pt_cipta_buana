@@ -5,7 +5,7 @@ from .models import Konsultasi, Proyek, Gambar, GambarProyek, Biaya, Klien, Kont
 
 admin.site.register(Konsultasi)
 
-'''
+
 class GambarProyekInline(admin.TabularInline):
     model = GambarProyek
     extra = 1
@@ -19,4 +19,3 @@ admin.site.register(GambarProyek)
 admin.site.register(Biaya)
 admin.site.register(Klien)
 admin.site.register(Kontak)
-'''
