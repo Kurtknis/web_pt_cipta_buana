@@ -157,7 +157,12 @@ export const translations = {
     // Clients
     clients: {
       title: 'Klien Kami',
-      subtitle: 'Dipercaya oleh perusahaan terkemuka di Indonesia'
+      subtitle: 'Dipercaya oleh perusahaan terkemuka di Indonesia',
+      realStoriesSubtitle: 'Testimoni nyata dari klien kami, lengkap dengan detail proyek, budget, dan timeline pengerjaan.',
+      badge: 'Testimoni Asli',
+      kpiProfiles: 'Profil Klien',
+      kpiRating: 'Rating Rata-rata',
+      kpiOnTime: 'Tepat Waktu'
     },
     // Consultation
     consultation: {
@@ -414,7 +419,12 @@ export const translations = {
     },
     clients: {
       title: 'Our Clients',
-      subtitle: 'Trusted by leading companies in Indonesia'
+      subtitle: 'Trusted by leading companies in Indonesia',
+      realStoriesSubtitle: 'Real testimonials from our clients, with project details, budget, and timeline.',
+      badge: 'Real Stories',
+      kpiProfiles: 'Client Profiles',
+      kpiRating: 'Average Rating',
+      kpiOnTime: 'On-Time Delivery'
     },
     consultation: {
       title: 'Free Online Consultation',
@@ -651,7 +661,12 @@ export const translations = {
     },
     clients: {
       title: '我们的客户',
-      subtitle: '受到印尼领先公司的信赖'
+      subtitle: '受到印尼领先公司的信赖',
+      realStoriesSubtitle: '来自客户的真实评价，含项目详情、预算与工期。',
+      badge: '真实故事',
+      kpiProfiles: '客户档案',
+      kpiRating: '平均评分',
+      kpiOnTime: '准时交付'
     },
     consultation: {
       title: '免费在线咨询',
@@ -888,7 +903,12 @@ export const translations = {
     },
     clients: {
       title: 'Nuestros Clientes',
-      subtitle: 'Confiado por empresas líderes en Indonesia'
+      subtitle: 'Confiado por empresas líderes en Indonesia',
+      realStoriesSubtitle: 'Testimonios reales de nuestros clientes, con detalles del proyecto, presupuesto y plazos.',
+      badge: 'Historias Reales',
+      kpiProfiles: 'Perfiles de Clientes',
+      kpiRating: 'Valoración Media',
+      kpiOnTime: 'Entrega a Tiempo'
     },
     consultation: {
       title: 'Consulta Online Gratis',

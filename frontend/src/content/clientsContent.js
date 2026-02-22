@@ -4,6 +4,7 @@
  * ============================================================
  * Gunakan format per-orang (bukan nama perusahaan) agar mockup
  * terasa lebih realistis dan personal.
+ * Foto asli testimoni: taruh file di public/testimoni/ lalu isi photo dengan path, misal '/testimoni/nama-file.jpg'
  */
 
 export const clientsList = [
@@ -15,6 +16,7 @@ export const clientsList = [
     budget: 'Rp 380.000.000',
     timeline: '4 bulan',
     rating: 5,
+    photo: '/testimoni/image.png',
     testimonial: 'Tim sangat detail dari konsep sampai eksekusi. Hasil akhir sesuai moodboard dan kualitas pengerjaan rapi.'
   },
   {
@@ -25,6 +27,7 @@ export const clientsList = [
     budget: 'Rp 245.000.000',
     timeline: '3 bulan',
     rating: 5,
+    photo: null,
     testimonial: 'Layout bisnis jadi jauh lebih efektif. Banyak customer bilang tempat kami sekarang lebih premium dan nyaman.'
   },
   {
@@ -35,6 +38,7 @@ export const clientsList = [
     budget: 'Rp 520.000.000',
     timeline: '5 bulan',
     rating: 5,
+    photo: null,
     testimonial: 'Komunikasi cepat, timeline terjaga, dan hasil sesuai standar perusahaan kami. Sangat recommended untuk project besar.'
   },
   {
@@ -45,6 +49,7 @@ export const clientsList = [
     budget: 'Rp 160.000.000',
     timeline: '2.5 bulan',
     rating: 4,
+    photo: null,
     testimonial: 'Kualitas custom furniture sangat baik. Finishing clean, fitting presisi, dan support after-sales juga responsif.'
   },
   {
@@ -55,6 +60,7 @@ export const clientsList = [
     budget: 'Rp 295.000.000',
     timeline: '3.5 bulan',
     rating: 5,
+    photo: null,
     testimonial: 'Value investasinya terasa. Unit cepat tersewa karena desain terlihat modern dan marketable.'
   },
   {
@@ -65,6 +71,7 @@ export const clientsList = [
     budget: 'Rp 410.000.000',
     timeline: '4 bulan',
     rating: 5,
+    photo: null,
     testimonial: 'Visual showroom naik kelas dan brand image jadi lebih kuat. Timnya profesional dari awal sampai handover.'
   }
 ];
