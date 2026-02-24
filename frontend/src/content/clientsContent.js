@@ -9,7 +9,7 @@
 
 export const clientsList = [
   {
-    name: 'Andi Pratama',
+    name: 'Pak Yudha',
     role: 'Homeowner',
     location: 'Jakarta Selatan',
     project: 'Renovasi Interior Rumah 2 Lantai',

@@ -92,7 +92,7 @@ export const portfolioItems = [
     duration: '-',
     budget: '-',
     client: '-',
-    images: img('Brawijaya Tipe 55', 'Kamar Anak - View 1.png', 'Kamar Anak - View2.png'),
+    images: img('brawijatipe55kamaranak', 'Kamar Anak - View 1.png', 'Kamar Anak - View2.png'),
     description: 'Desain kamar anak unit Brawijaya Tipe 55: fungsional, aman, dan nyaman untuk tumbuh kembang anak dengan storage yang memadai.',
     detailedDescription: 'Kamar anak dirancang dengan zoning yang jelas antara area tidur, bermain, dan belajar. Material ramah anak dan finishing yang aman menjadi prioritas, tanpa mengorbankan tampilan yang rapi dan mudah dibersihkan.',
     features: [],

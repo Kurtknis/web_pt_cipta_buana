@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { PaintBucket, Ruler, Wrench, Hammer, ArrowRight, CheckCircle2 } from 'lucide-react';
 import '../App.css';
@@ -49,6 +49,7 @@ const services = [
 
 function Services() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const cardsRef = useRef([]);
 
   useEffect(() => {
@@ -92,8 +93,12 @@ function Services() {
             <div
               key={service.id}
               ref={(el) => (cardsRef.current[i] = el)}
-              className={`svc-row ${isReversed ? 'svc-row--reversed' : ''}`}
+              className={`svc-row svc-row--clickable ${isReversed ? 'svc-row--reversed' : ''}`}
               style={{ '--svc-accent': service.color, '--svc-accent-light': service.colorLight }}
+              onClick={() => navigate(`/layanan/${service.id}`)}
+              role="link"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate(`/layanan/${service.id}`); }}
             >
               <div className="svc-row-image">
                 <img src={service.image} alt={t(service.titleKey)} loading="lazy" />
@@ -114,9 +119,9 @@ function Services() {
                     </li>
                   ))}
                 </ul>
-                <Link to={`/layanan/${service.id}`} className="svc-row-btn">
+                <span className="svc-row-btn">
                   {t('services.learnMore')} <ArrowRight size={16} />
-                </Link>
+                </span>
               </div>
             </div>
           );

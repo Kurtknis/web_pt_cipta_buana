@@ -1,0 +1,6 @@
+export const footer = {
+  id: { description: 'Jam Operasional: Senin - Jumat 09.00 - 18.00, Sabtu 09.00 - 15.00, Minggu Tutup.', services: 'Layanan', company: 'Perusahaan', operatingHours: 'Jam Operasional', mondayFriday: 'Senin - Jumat: 09:00 - 18:00', saturday: 'Sabtu: 09:00 - 15:00', sunday: 'Minggu: Tutup', rightsReserved: 'All Rights Reserved.' },
+  en: { description: 'Realizing your dream space with professional touch and latest innovations in interior design and architecture.', services: 'Services', company: 'Company', operatingHours: 'Operating Hours', mondayFriday: 'Monday - Friday: 09:00 - 18:00', saturday: 'Saturday: 09:00 - 15:00', sunday: 'Sunday: Closed', rightsReserved: 'All Rights Reserved.' },
+  zh: { description: '以专业的触感和室内设计和建筑的最新创新实现您的梦想空间。', services: '服务', company: '公司', operatingHours: '营业时间', mondayFriday: '周一 - 周五: 09:00 - 18:00', saturday: '周六: 09:00 - 15:00', sunday: '周日: 休息', rightsReserved: '版权所有。' },
+  es: { description: 'Realizando tu espacio soñado con toque profesional y las últimas innovaciones en diseño de interiores y arquitectura.', services: 'Servicios', company: 'Empresa', operatingHours: 'Horario de Atención', mondayFriday: 'Lunes - Viernes: 09:00 - 18:00', saturday: 'Sábado: 09:00 - 15:00', sunday: 'Domingo: Cerrado', rightsReserved: 'Todos los Derechos Reservados.' }
+};
