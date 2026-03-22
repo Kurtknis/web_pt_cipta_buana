@@ -38,3 +38,57 @@ export const pricingCategories = [
   { id: 'Residential', name: 'Residensial' },
   { id: 'Commercial', name: 'Komersial' }
 ];
+
+// ----- PAKET HARGA (untuk layout selector kiri–kanan) -----
+export const pricingPackages = [
+  {
+    id: 'basic',
+    name: 'Basic Interior',
+    startingPrice: 'Rp 150.000/m²',
+    includedServices: [
+      'Konsep desain interior',
+      'Gambar kerja',
+      'Pengawasan pemasangan',
+      'Material standar'
+    ],
+    projectExampleIds: [1, 2]
+  },
+  {
+    id: 'premium',
+    name: 'Premium Interior',
+    startingPrice: 'Rp 200.000/m²',
+    includedServices: [
+      'Semua layanan Basic',
+      'Pilihan material beragam',
+      'Custom furniture ringan',
+      'Koordinasi dengan kontraktor'
+    ],
+    projectExampleIds: [2, 3, 9]
+  },
+  {
+    id: 'full-renovation',
+    name: 'Full Renovation',
+    startingPrice: 'Rp 250.000/m²',
+    includedServices: [
+      'Desain menyeluruh',
+      'Renovasi & transformasi ruang',
+      'Material pilihan',
+      'Manajemen proyek terpadu',
+      'Quality control'
+    ],
+    projectExampleIds: [3, 4, 8]
+  },
+  {
+    id: 'design-build',
+    name: 'Design + Build',
+    startingPrice: 'Rp 280.000/m²',
+    includedServices: [
+      'Arsitektur interior lengkap',
+      'Koordinasi M&E',
+      'Material berkualitas tinggi',
+      'Tim dedicated',
+      'Garansi pasca serah terima'
+    ],
+    projectExampleIds: [5, 6, 7]
+  }
+];

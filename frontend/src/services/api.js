@@ -14,12 +14,12 @@ export const submitConsultation = async (formData) => {
       deskripsi: formData.description,
     };
 
+    const headers = { 'Content-Type': 'application/json' };
+    if (API_KEY) headers['X-API-KEY'] = API_KEY;
+
     const response = await fetch(`${API_BASE_URL}/data/consultation/`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-API-KEY': API_KEY,
-      },
+      headers,
       body: JSON.stringify(payload),
     });
 

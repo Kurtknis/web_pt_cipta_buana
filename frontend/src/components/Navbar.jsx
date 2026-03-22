@@ -12,6 +12,15 @@ function Navbar() {
   const { language, changeLanguage, t } = useLanguage();
 
   useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('nav-mobile-open');
+    } else {
+      document.body.classList.remove('nav-mobile-open');
+    }
+    return () => document.body.classList.remove('nav-mobile-open');
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -54,7 +63,7 @@ function Navbar() {
         <div className="nav-content">
           <div className="logo logo-text-only">
             <Link to="/" className="logo-link">
-              <span className="logo-brand">CIPTA BUANA KREASI</span>
+              <span className="logo-brand">CIPTA KREASI BUANA</span>
             </Link>
           </div>
 
@@ -93,7 +102,12 @@ function Navbar() {
               )}
             </div>
 
-            <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button
+              className="menu-toggle"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-label={isMenuOpen ? 'Tutup menu' : 'Buka menu'}
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>

@@ -7,12 +7,15 @@
 @import './styles/landing.css';
 @import './styles/services.css';
 @import './styles/portfolio.css';
+@import './styles/portfolio-radio.css';
 @import './styles/pricing.css';
+@import './styles/pricing-package.css';
 @import './styles/clients.css';
 @import './styles/consultation.css';
 @import './styles/contact.css';
 @import './styles/furniture.css';
 @import './styles/footer.css';
+@import './styles/responsive-mobile.css';
 
 * {
   margin: 0;
@@ -182,7 +185,7 @@ html {
   color: inherit;
 }
 
-/* Logo text-only - CIPTA BUANA KREASI gold */
+/* Logo text-only - CIPTA KREASI BUANA gold */
 .logo-text-only .logo-link {
   text-decoration: none;
 }

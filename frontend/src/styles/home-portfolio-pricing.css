@@ -1,0 +1,1022 @@
+/* ============================================================
+   Home: SEO Landing — Hero, Portfolio Showcase, Layanan, Pricing, Client Trust, CTA
+   Brand: #F59E0B, #D97706, #0F172A, #1E293B, #F8FAFC, #94A3B8
+   ============================================================ */
+
+/* ---------- Section inner (shared) ---------- */
+.home-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------- Meet Our CEO Section ---------- */
+.home-meet-ceo {
+  padding: 3rem 0;
+  background: var(--beige, #f5f0e6);
+}
+
+.home-meet-ceo-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.home-meet-ceo-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 1rem;
+}
+
+.home-meet-ceo-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0 0 0.8rem;
+}
+
+.home-meet-ceo-body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0;
+}
+
+.home-meet-ceo-photo-wrap {
+  justify-self: center;
+  max-width: 320px;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+  overflow: hidden;
+}
+
+.home-meet-ceo-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e2e8f0;
+}
+
+/* ---------- Visi & Misi two-column (SEO-friendly, all in DOM) ---------- */
+.home-vm-two-col.about-section-v2 {
+  padding: 4rem 0;
+}
+
+.home-vm-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.home-vm-heading {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: 700;
+  color: #0F172A;
+  text-align: center;
+  margin: 0 0 2.5rem;
+}
+
+.home-vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.home-vm-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.home-vm-col {
+  margin: 0;
+}
+
+.home-vm-col-inner {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  height: 100%;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.home-vm-col-inner:hover {
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+.home-vm-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #D97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.home-vm-col-title {
+  font-family: 'Lora', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 1rem;
+}
+
+.home-vm-quote {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #475569;
+  font-style: italic;
+  margin: 0;
+  padding-left: 0.5rem;
+  border-left: 3px solid #F59E0B;
+}
+
+.home-vm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-vm-list-item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-vm-list-item:last-child {
+  border-bottom: none;
+}
+
+.home-vm-list-num {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #0F172A;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.home-vm-list-text {
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.55;
+}
+
+.home-vm-list-check {
+  color: #F59E0B;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Fakta tentang perusahaan (di bawah Visi, satu kolom dengan Visi) */
+.home-vm-facts .home-vm-col-inner {
+  padding: 1.5rem 1.75rem;
+}
+
+.home-vm-facts-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.home-vm-facts-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  margin: 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.home-vm-facts-item:last-child {
+  border-bottom: none;
+}
+
+.home-vm-facts-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
+}
+
+.home-vm-facts-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #0F172A;
+  margin: 0;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .home-vm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-vm-col-inner {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .home-vm-facts-value {
+    text-align: left;
+  }
+}
+
+/* ---------- Section Design Interior (gambar kiri, deskripsi kanan) ---------- */
+.home-design-interior {
+  padding: 4rem 0;
+  background: var(--beige, #f5f0e6);
+}
+
+.home-design-interior-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.home-design-interior-image-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
+  background: #fff;
+}
+
+.home-design-interior-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.home-design-interior-content {
+  padding: 0 0.5rem 0 0;
+}
+
+.home-design-interior-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+
+.home-design-interior-lead {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.home-design-interior-body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0 0 1.25rem;
+}
+
+.home-design-interior-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #0F172A;
+  margin: 0 0 1.5rem;
+}
+
+.home-design-interior-price-value {
+  color: #D97706;
+  font-weight: 700;
+}
+
+.home-design-interior-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0F172A;
+  background: #F59E0B;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.home-design-interior-cta:hover {
+  background: #D97706;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(217, 119, 6, 0.4);
+}
+
+@media (max-width: 768px) {
+  .home-design-interior-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .home-design-interior-content {
+    padding: 0;
+  }
+
+  .home-design-interior-image-wrap {
+    order: 1;
+  }
+
+  .home-design-interior-content {
+    order: 2;
+  }
+}
+
+/* ---------- SECTION 1 — Hero SEO ---------- */
+.home-hero-seo {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.25rem;
+  overflow: hidden;
+}
+
+.home-hero-seo-bg {
+  position: absolute;
+  inset: 0;
+  background: url('/background101.png') center/cover no-repeat, url('/inibackground.jpg') center/cover no-repeat, #0F172A;
+}
+
+.home-hero-seo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.85) 50%, rgba(15, 23, 42, 0.9) 100%);
+  pointer-events: none;
+}
+
+.home-hero-seo-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.home-hero-seo-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #F8FAFC;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.home-hero-seo-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  line-height: 1.65;
+  color: #94A3B8;
+  margin: 0 0 1.5rem;
+}
+
+.home-hero-seo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.home-hero-seo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.home-hero-seo-btn-primary {
+  background: #F59E0B;
+  color: #0F172A;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+}
+
+.home-hero-seo-btn-primary:hover {
+  background: #D97706;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(217, 119, 6, 0.4);
+}
+
+.home-hero-seo-btn-secondary {
+  background: transparent;
+  color: #F8FAFC;
+  border-color: rgba(248, 250, 252, 0.4);
+}
+
+.home-hero-seo-btn-secondary:hover {
+  background: rgba(248, 250, 252, 0.08);
+  border-color: #F59E0B;
+  transform: translateY(-2px);
+}
+
+/* ---------- SECTION 2 — Portfolio Showcase ---------- */
+.home-portfolio-showcase {
+  padding: 3rem 0;
+  background: linear-gradient(
+    180deg,
+    var(--beige, #f5f0e6) 0%,
+    #1e293b 35%,
+    #0F172A 100%
+  );
+}
+
+.home-portfolio-showcase .portfolio-radio-section {
+  background: transparent;
+  padding: 0 0 1.5rem;
+}
+
+.home-portfolio-showcase h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.home-portfolio-showcase-cta {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* ---------- SECTION 3 — Layanan Utama ---------- */
+.home-layanan {
+  padding: 3rem 0;
+  background: #0F172A;
+}
+
+.home-layanan h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #F8FAFC;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.home-layanan-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.home-layanan-card {
+  background: #1E293B;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-layanan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.home-layanan-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.home-layanan-card-title {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 0.5rem;
+}
+
+.home-layanan-card-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #94A3B8;
+  margin: 0 0 1rem;
+  flex: 1;
+}
+
+.home-layanan-card-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #F59E0B;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.home-layanan-card-btn:hover {
+  color: #F8FAFC;
+  gap: 0.6rem;
+}
+
+/* ---------- SECTION 5 — Client Trust ---------- */
+.home-client-trust {
+  padding: 3rem 0;
+  background: #0F172A;
+}
+
+.home-client-trust h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #F8FAFC;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.home-client-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.home-client-trust-card {
+  background: #1E293B;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  border-left: 4px solid #F59E0B;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-client-trust-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+
+.home-client-trust-quote {
+  color: #F59E0B;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.home-client-trust-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #94A3B8;
+  margin: 0 0 1rem;
+}
+
+.home-client-trust-meta {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #F8FAFC;
+}
+
+.home-client-trust-meta strong {
+  color: #F8FAFC;
+}
+
+.home-client-trust-project {
+  display: block;
+  color: #94A3B8;
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+
+.home-client-trust-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ---------- SECTION 6 — Consultation CTA ---------- */
+.home-cta-consult {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  text-align: center;
+}
+
+.home-cta-consult h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 0.5rem;
+}
+
+.home-cta-consult-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #94A3B8;
+  margin: 0 0 1.5rem;
+}
+
+.home-cta-consult-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0F172A;
+  background: #F59E0B;
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.home-cta-consult-btn:hover {
+  background: #D97706;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(217, 119, 6, 0.45);
+}
+
+/* ============================================================
+   Home: Portfolio Preview & Pricing Preview (Section 2 & 4)
+   ============================================================ */
+
+/* ---------- Section containers ---------- */
+.home-portfolio-preview,
+.home-pricing-preview {
+  padding: 3rem 0;
+  background: #0F172A;
+}
+
+.home-portfolio-preview .home-section-inner,
+.home-pricing-preview .home-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.home-portfolio-preview h2,
+.home-pricing-preview h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #F8FAFC;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ---------- Portfolio Preview: 2 columns ---------- */
+.home-portfolio-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.home-portfolio-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: #1E293B;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.home-portfolio-cat-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #F8FAFC;
+  background: transparent;
+  border: none;
+  border-left: 4px solid transparent;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.home-portfolio-cat-btn:hover {
+  background: rgba(248, 250, 252, 0.06);
+}
+
+.home-portfolio-cat-btn.active {
+  border-left-color: #F59E0B;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.home-portfolio-detail {
+  background: #1E293B;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.home-portfolio-detail-image {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1rem;
+  background: #0F172A;
+}
+
+.home-portfolio-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-portfolio-detail-title {
+  font-family: 'Lora', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 0.5rem;
+}
+
+.home-portfolio-detail-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #94A3B8;
+  margin: 0 0 0.75rem;
+}
+
+.home-portfolio-detail-meta {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.home-portfolio-detail-meta span + span::before {
+  content: ' · ';
+}
+
+.home-portfolio-cta {
+  margin-top: 1.5rem;
+}
+
+.home-portfolio-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0F172A;
+  background: #F59E0B;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.home-portfolio-cta a:hover {
+  background: #D97706;
+  color: #0F172A;
+  transform: translateY(-1px);
+}
+
+/* ---------- Pricing Preview: 3 cards ---------- */
+.home-pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.home-pricing-card {
+  background: #1E293B;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.home-pricing-card-title {
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 0.5rem;
+}
+
+.home-pricing-card-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #F59E0B;
+  margin-bottom: 1rem;
+}
+
+.home-pricing-card-services {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  flex: 1;
+}
+
+.home-pricing-card-services li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  color: #94A3B8;
+  padding: 0.25rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.home-pricing-card-services li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #F59E0B;
+}
+
+.home-pricing-card-cta {
+  margin-top: auto;
+}
+
+.home-pricing-card-cta a {
+  display: block;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0F172A;
+  background: #F59E0B;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.home-pricing-card-cta a:hover {
+  background: #D97706;
+  color: #0F172A;
+}
+
+.home-pricing-cta-wrap {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.home-pricing-cta-wrap a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  background: transparent;
+  border: 2px solid #F59E0B;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.home-pricing-cta-wrap a:hover {
+  background: #F59E0B;
+  color: #0F172A;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+  .home-portfolio-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-portfolio-category-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .home-portfolio-cat-btn {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+
+  .home-portfolio-cat-btn.active {
+    border-left: none;
+    border-bottom-color: #F59E0B;
+  }
+
+  .home-pricing-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .home-meet-ceo-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .home-meet-ceo-photo-wrap {
+    margin-top: 1.5rem;
+  }
+
+  .home-portfolio-preview,
+  .home-pricing-preview {
+    padding: 2rem 0;
+  }
+
+  .home-portfolio-preview h2,
+  .home-pricing-preview h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .home-pricing-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .home-pricing-card {
+    padding: 1.25rem;
+  }
+
+  .home-hero-seo {
+    min-height: 60vh;
+    padding: 3rem 1rem;
+  }
+
+  .home-layanan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-client-trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Tablet: 2 columns ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .home-layanan-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

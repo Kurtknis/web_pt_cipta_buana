@@ -3,8 +3,11 @@ import { ChevronRight, X, Target, Compass, ListChecks, Phone, Mail, MapPin, Arro
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { youtubeVideos, homePortfolioItems } from '../content/homeContent';
-import { pricingProjects, pricingCategories } from '../content/pricingPageContent';
+import { pricingProjects, pricingCategories, pricingPackages } from '../content/pricingPageContent';
 import { contactInfo } from '../content/contactPageContent';
+import PortfolioRadioLayout from '../components/PortfolioRadioLayout';
+import '../styles/portfolio-radio.css';
+import '../styles/home-portfolio-pricing.css';
 import '../App.css';
 
 const portfolioItems = homePortfolioItems.map((item) => ({
@@ -19,11 +22,19 @@ const getEmbedUrl = (url) => {
   return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
 };
 
+const HOME_PRICING_PACKAGES = [pricingPackages[0], pricingPackages[1], pricingPackages[3]].filter(Boolean);
+
+const HOME_FACTS = [
+  { label: 'Tahun Berdiri', value: 'Lebih dari 5 tahun' },
+  { label: 'Lokasi', value: 'Tangerang Selatan, Pamulang' },
+  { label: 'Area Layanan', value: 'Jabodetabek & sekitarnya' },
+  { label: 'Fokus', value: 'Interior, Arsitektur, Renovasi' },
+];
+
 function HomeSimple() {
   const { t } = useLanguage();
   const [portfolioDetail, setPortfolioDetail] = useState(null);
   const [detailImageIndex, setDetailImageIndex] = useState(0);
-  const [aboutTab, setAboutTab] = useState('visi'); // 'visi' or 'misi'
   const [selectedPricingCategory, setSelectedPricingCategory] = useState('all');
 
   const filteredPricingProjects = selectedPricingCategory === 'all'
@@ -44,7 +55,7 @@ function HomeSimple() {
 
   return (
     <>
-      {/* Hero Section - Landing Premium with Services */}
+      {/* Hero Section - Landing Premium with Services (keep original UI) */}
       <section className="landing-hero">
         <div className="landing-hero-overlay" />
         <div className="landing-hero-grain" />
@@ -128,61 +139,115 @@ function HomeSimple() {
         <div className="landing-hero-bottom-fade" />
       </section>
 
-      {/* Fade dot divider: hero → visi misi */}
+      {/* Fade dot divider: hero → meet CEO + visi misi */}
       <div className="dot-divider dot-divider--hero-to-beige" />
 
-      {/* Visi & Misi Section */}
-      <section id="about" className="about-section about-section-v2">
-        <div className="about-inner about-inner-v2">
-          {/* Tab buttons */}
-          <div className="vm-tabs">
-            <button
-              type="button"
-              className={`vm-tab-btn ${aboutTab === 'visi' ? 'active' : ''}`}
-              onClick={() => setAboutTab('visi')}
-            >
-              <Compass size={20} />
-              {t('about.visionTitle')}
-            </button>
-            <button
-              type="button"
-              className={`vm-tab-btn ${aboutTab === 'misi' ? 'active' : ''}`}
-              onClick={() => setAboutTab('misi')}
-            >
-              <Target size={20} />
-              {t('about.missionTitle')}
-            </button>
+      {/* Meet Our CEO Section */}
+      <section className="home-meet-ceo" aria-labelledby="home-meet-ceo-heading">
+        <div className="home-section-inner home-meet-ceo-inner">
+          <div className="home-meet-ceo-text">
+            <h2 id="home-meet-ceo-heading" className="home-meet-ceo-title">
+              Meet Our CEO, Radika
+            </h2>
+            <p className="home-meet-ceo-subtitle">
+              Radika memimpin PT Cipta Kreasi Buana dengan fokus pada desain interior yang fungsional,
+              estetis, dan tepat waktu. Setiap proyek dikerjakan dengan pendekatan personal dan bertanggung jawab
+              dari konsep sampai serah terima.
+            </p>
+            <p className="home-meet-ceo-body">
+              Dengan pengalaman bertahun-tahun di bidang interior, arsitektur, dan renovasi, Radika memastikan
+              setiap detail ruang benar-benar menjawab kebutuhan klien — mulai dari rumah tinggal, apartemen,
+              hingga ruang komersial.
+            </p>
           </div>
+          <div className="home-meet-ceo-photo-wrap">
+            <img
+              src="/ceo-radika.png"
+              alt="Radika, CEO PT Cipta Kreasi Buana - Jasa Design Interior dan Arsitektur"
+              className="home-meet-ceo-photo"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
 
-          {/* Tab content */}
-          <div className="vm-content">
-            {aboutTab === 'visi' && (
-              <div className="vm-panel vm-panel-visi">
-                <div className="vm-panel-icon">
-                  <Compass size={36} />
-                </div>
-                <h2 className="vm-panel-title">{t('about.visionTitle')}</h2>
-                <blockquote className="vm-panel-quote">{t('about.vision')}</blockquote>
-              </div>
-            )}
+      {/* Visi & Misi Section — two columns, SEO-friendly (all content in DOM) */}
+      <section id="about" className="about-section about-section-v2 home-vm-two-col" aria-labelledby="vm-section-heading">
+        <div className="home-section-inner home-vm-inner">
+          <h2 id="vm-section-heading" className="home-vm-heading">Visi & Misi PT Cipta Kreasi Buana</h2>
 
-            {aboutTab === 'misi' && (
-              <div className="vm-panel vm-panel-misi">
-                <div className="vm-panel-icon">
-                  <Target size={36} />
+          <div className="home-vm-grid">
+            <div className="home-vm-col home-vm-col-left">
+              <article className="home-vm-visi" aria-labelledby="vm-visi-heading">
+                <div className="home-vm-col-inner">
+                  <span className="home-vm-icon" aria-hidden><Compass size={32} /></span>
+                  <h3 id="vm-visi-heading" className="home-vm-col-title">{t('about.visionTitle')}</h3>
+                  <blockquote className="home-vm-quote" cite="#about">
+                    {t('about.vision')}
+                  </blockquote>
                 </div>
-                <h2 className="vm-panel-title">{t('about.missionTitle')}</h2>
-                <div className="vm-mission-grid">
+              </article>
+              <article className="home-vm-facts" aria-labelledby="home-vm-facts-heading">
+                <div className="home-vm-col-inner">
+                  <h3 id="home-vm-facts-heading" className="home-vm-col-title">Fakta tentang Perusahaan</h3>
+                  <dl className="home-vm-facts-list">
+                    {HOME_FACTS.map((item, i) => (
+                      <div key={i} className="home-vm-facts-item">
+                        <dt className="home-vm-facts-label">{item.label}</dt>
+                        <dd className="home-vm-facts-value">{item.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </article>
+            </div>
+
+            <article className="home-vm-col home-vm-misi" aria-labelledby="vm-misi-heading">
+              <div className="home-vm-col-inner">
+                <span className="home-vm-icon" aria-hidden><Target size={32} /></span>
+                <h3 id="vm-misi-heading" className="home-vm-col-title">{t('about.missionTitle')}</h3>
+                <ol className="home-vm-list">
                   {[0, 1, 2, 3, 4].map((i) => (
-                    <div key={i} className="vm-mission-card">
-                      <span className="vm-mission-num">{i + 1}</span>
-                      <p className="vm-mission-text">{t(`about.missionItems.${i}`)}</p>
-                      <ListChecks size={18} className="vm-mission-check" />
-                    </div>
+                    <li key={i} className="home-vm-list-item">
+                      <span className="home-vm-list-num" aria-hidden>{i + 1}</span>
+                      <span className="home-vm-list-text">{t(`about.missionItems.${i}`)}</span>
+                      <ListChecks size={18} className="home-vm-list-check" aria-hidden />
+                    </li>
                   ))}
-                </div>
+                </ol>
               </div>
-            )}
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Design Interior — image kiri, deskripsi kanan */}
+      <section className="home-design-interior" aria-labelledby="home-design-interior-heading">
+        <div className="home-section-inner home-design-interior-inner">
+          <div className="home-design-interior-image-wrap">
+            <img
+              src="/design-interior-flyer.png"
+              alt="Modular Kitchen - Design Interior PT Cipta Kreasi Buana, upgrade pengalaman dapur Anda"
+              className="home-design-interior-image"
+              loading="lazy"
+            />
+          </div>
+          <div className="home-design-interior-content">
+            <h2 id="home-design-interior-heading" className="home-design-interior-title">
+              Design Interior untuk Hunian & Komersial
+            </h2>
+            <p className="home-design-interior-lead">
+              Modular Kitchen hingga upgrade penuh ruang — kami wujudkan desain yang berbicara, menginspirasi, dan menjadi milik Anda.
+            </p>
+            <p className="home-design-interior-body">
+              Dari dapur modular berkualitas, ruang tamu, kamar tidur, hingga ruang komersial, PT Cipta Kreasi Buana menyediakan jasa desain interior dan build yang terintegrasi. Harga transparan per m², konsultasi gratis, dan eksekusi rapi sesuai timeline.
+            </p>
+            <p className="home-design-interior-price">
+              <strong>Modular Kitchen</strong> — mulai dari <span className="home-design-interior-price-value">Rp 199.999/m²</span>
+            </p>
+            <Link to="/konsultasi" className="home-design-interior-cta">
+              Book Konsultasi <ArrowRight size={18} aria-hidden />
+            </Link>
           </div>
         </div>
       </section>
@@ -190,35 +255,21 @@ function HomeSimple() {
       {/* Fade dot divider: visi misi → portfolio */}
       <div className="dot-divider dot-divider--beige-shift" />
 
-      {/* Portfolio Section - Landing */}
-      <section className="landing-section landing-portfolio">
-        <div className="landing-container">
-          <span className="landing-badge">{t('portfolio.title')}</span>
-          <h2 className="landing-title">{t('portfolio.subtitle')}</h2>
-          <div className="landing-portfolio-grid">
-            {portfolioItems.map((item) => (
-              <button
-                key={item.title}
-                type="button"
-                className="landing-portfolio-card"
-                onClick={() => { setPortfolioDetail(item); setDetailImageIndex(0); }}
-              >
-                <div className="landing-portfolio-image">
-                  <img src={item.image} alt={item.title} loading="lazy" />
-                  <span className="landing-portfolio-overlay">
-                    <span>{t('portfolio.viewDetail')}</span>
-                    <ChevronRight size={20} />
-                  </span>
-                </div>
-                <div className="landing-portfolio-body">
-                  <span className="landing-portfolio-cat">{item.category}</span>
-                  <h3 className="landing-portfolio-name">{item.title}</h3>
-                </div>
-              </button>
-            ))}
-          </div>
-          <div className="landing-cta-wrap">
-            <Link to="/portfolio" className="landing-cta-btn">{t('portfolio.viewAll')} →</Link>
+      {/* Portfolio Showcase - Radio Layout (overhauled) */}
+      <section className="home-portfolio-showcase" aria-labelledby="home-portfolio-heading">
+        <div className="home-section-inner">
+          <h2 id="home-portfolio-heading">Portofolio Proyek Interior dan Arsitektur</h2>
+          <PortfolioRadioLayout
+            hideTitle
+            onViewDetail={(item) => {
+              setPortfolioDetail(item);
+              setDetailImageIndex(0);
+            }}
+          />
+          <div className="home-portfolio-showcase-cta">
+            <Link to="/portfolio" className="home-hero-seo-btn home-hero-seo-btn-primary">
+              Lihat Semua Proyek <ArrowRight size={18} aria-hidden />
+            </Link>
           </div>
         </div>
       </section>
@@ -226,51 +277,30 @@ function HomeSimple() {
       {/* Fade dot divider: portfolio → pricing */}
       <div className="dot-divider dot-divider--beige-shift-alt" />
 
-      {/* Proyek & Harga Section - Landing */}
-      <section id="pricing" className="landing-section landing-pricing pricing-projects-section">
-        <div className="landing-container">
-          <span className="landing-badge">{t('pricing.title')}</span>
-          <h2 className="landing-title">{t('pricing.subtitle')}</h2>
-
-          <div className="pricing-category-filter landing-pricing-filter">
-            {pricingCategories.map((cat) => (
-              <button
-                key={cat.id}
-                className={`pricing-cat-btn ${selectedPricingCategory === cat.id ? 'active' : ''}`}
-                onClick={() => setSelectedPricingCategory(cat.id)}
-              >
-                {cat.name}
-              </button>
+      {/* Pricing Preview (overhauled) */}
+      <section id="pricing" className="home-pricing-preview" aria-labelledby="home-pricing-heading">
+        <div className="home-section-inner">
+          <h2 id="home-pricing-heading">Harga Jasa Design Interior</h2>
+          <div className="home-pricing-cards">
+            {HOME_PRICING_PACKAGES.map((pkg) => (
+              <article key={pkg.id || pkg.name} className="home-pricing-card">
+                <h3 className="home-pricing-card-title">{pkg.name}</h3>
+                <p className="home-pricing-card-price">
+                  Mulai {pkg.startingPrice ?? 'Rp —'}
+                </p>
+                <ul className="home-pricing-card-services">
+                  {(pkg.includedServices || []).slice(0, 3).map((s, i) => (
+                    <li key={i}>{typeof s === 'string' ? s : s?.label ?? s?.name ?? ''}</li>
+                  ))}
+                </ul>
+                <div className="home-pricing-card-cta">
+                  <Link to="/konsultasi">Konsultasi</Link>
+                </div>
+              </article>
             ))}
           </div>
-
-          <div className="pricing-projects-grid">
-            {filteredPricingProjects.map((project) => (
-              <div key={project.id} className="pricing-project-card">
-                <div className="pricing-project-image">
-                  <img src={project.image} alt={project.title} loading="lazy" />
-                  <span className="pricing-project-category">{project.category}</span>
-                </div>
-                <div className="pricing-project-info">
-                  <h3>{project.title}</h3>
-                  <p className="pricing-project-meta">{project.location} · {project.duration}</p>
-                  <div className="pricing-project-price">{project.price}</div>
-                  <Link to="/konsultasi" className="btn btn-primary pricing-consult-btn">
-                    {t('pricing.consult')}
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {filteredPricingProjects.length === 0 && (
-            <p style={{ textAlign: 'center', color: '#666', padding: '3rem' }}>
-              Tidak ada proyek di kategori ini.
-            </p>
-          )}
-
-          <div className="landing-cta-wrap">
-            <Link to="/harga" className="landing-cta-btn">{t('pricing.title')} →</Link>
+          <div className="home-pricing-cta-wrap">
+            <Link to="/harga">Lihat Detail Harga</Link>
           </div>
         </div>
       </section>
@@ -278,7 +308,7 @@ function HomeSimple() {
       {/* Fade dot divider: pricing → contact */}
       <div className="dot-divider dot-divider--beige-shift" />
 
-      {/* Contact Section - Hubungi Kami */}
+      {/* Contact Section - Hubungi Kami (unchanged) */}
       <section className="contact-section-simple">
         <div className="contact-simple-inner">
           <h2 className="contact-simple-heading">{t('home.contactUsTitle')}</h2>
@@ -318,7 +348,7 @@ function HomeSimple() {
       {/* Fade dot divider: contact → video */}
       <div className="dot-divider dot-divider--beige-shift-alt" />
 
-      {/* Video Dokumentasi - Paling bawah, 3 video siap putar di dalam website */}
+      {/* Video Dokumentasi - Paling bawah, 3 video siap putar di dalam website (unchanged) */}
       <section id="videos" className="landing-section landing-videos videos-section">
         <div className="landing-container">
           <span className="landing-badge">{t('home.videoTitle')}</span>

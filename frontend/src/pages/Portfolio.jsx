@@ -1,108 +1,17 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
-import { Search, Filter, Eye, ExternalLink, Calendar, MapPin, Award, ChevronLeft, ChevronRight, X, Play, Grid, List } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Calendar, MapPin, Award, ChevronLeft, ChevronRight, X, Play } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { portfolioItems } from '../content/portfolioContent';
+import PortfolioRadioLayout from '../components/PortfolioRadioLayout';
+import '../styles/portfolio-radio.css';
 import '../App.css';
 
 function Portfolio() {
   const { t } = useLanguage();
   const [selectedItem, setSelectedItem] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isGalleryMode, setIsGalleryMode] = useState(false);
   const [galleryImages, setGalleryImages] = useState([]);
-  const [viewMode, setViewMode] = useState('carousel'); // 'grid' or 'carousel'
-  const [carouselIndex, setCarouselIndex] = useState({});
-
-  // Touch/swipe handling
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  const minSwipeDistance = 50;
-
-  const categoryNames = { Residential: 'Residensial', Commercial: 'Komersial', Hospitality: 'Hospitality', Interior: 'Interior' };
-  const categories = useMemo(() => {
-    const list = [{ id: 'all', name: 'Semua Kategori', count: portfolioItems.length }];
-    const seen = new Set();
-    portfolioItems.forEach((item) => {
-      if (!seen.has(item.category)) {
-        seen.add(item.category);
-        list.push({
-          id: item.category,
-          name: categoryNames[item.category] || item.category,
-          count: portfolioItems.filter((p) => p.category === item.category).length
-        });
-      }
-    });
-    return list;
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- portfolioItems from module scope
-  }, []);
-
-  const filteredItems = useMemo(() => {
-    return portfolioItems.filter(item => {
-      const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           item.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           item.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchTerm, selectedCategory]);
-
-  // Group items by category for carousel view
-  const itemsByCategory = useMemo(() => {
-    const grouped = {};
-    categories.forEach(cat => {
-      if (cat.id === 'all') return;
-      grouped[cat.id] = portfolioItems.filter(item => item.category === cat.id);
-    });
-    return grouped;
-  }, [categories]);
-
-  // Carousel navigation functions
-  const nextSlide = (category) => {
-    const items = itemsByCategory[category];
-    if (!items || items.length === 0) return;
-    
-    setCarouselIndex(prev => ({
-      ...prev,
-      [category]: ((prev[category] || 0) + 1) % Math.ceil(items.length / 3)
-    }));
-  };
-
-  const prevSlide = (category) => {
-    const items = itemsByCategory[category];
-    if (!items || items.length === 0) return;
-    
-    setCarouselIndex(prev => ({
-      ...prev,
-      [category]: ((prev[category] || 0) - 1 + Math.ceil(items.length / 3)) % Math.ceil(items.length / 3)
-    }));
-  };
-
-  // Touch handlers for swipe
-  const onTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = (category) => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      nextSlide(category);
-    }
-    if (isRightSwipe) {
-      prevSlide(category);
-    }
-  };
 
   const openGallery = (images, startIndex = 0) => {
     setGalleryImages(images);
@@ -111,13 +20,13 @@ function Portfolio() {
   };
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => 
+    setCurrentImageIndex((prev) =>
       prev === galleryImages.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => 
+    setCurrentImageIndex((prev) =>
       prev === 0 ? galleryImages.length - 1 : prev - 1
     );
   };
@@ -128,19 +37,18 @@ function Portfolio() {
     setCurrentImageIndex(0);
   };
 
-  // Close modal on Escape key
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') {
       setSelectedItem(null);
       setIsGalleryMode(false);
     }
   }, []);
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
-  // Lock body scroll when modal or gallery is open
   useEffect(() => {
     if (selectedItem || isGalleryMode) {
       document.body.style.overflow = 'hidden';
@@ -150,317 +58,23 @@ function Portfolio() {
     return () => { document.body.style.overflow = ''; };
   }, [selectedItem, isGalleryMode]);
 
-  const ourProjectTypes = [
-    { key: 'residential', image: portfolioItems.find(p => p.category === 'Residential')?.images?.[0] || '' },
-    { key: 'corporate', image: portfolioItems.find(p => p.category === 'Commercial')?.images?.[0] || portfolioItems[0]?.images?.[0] || '' },
-    { key: 'commercial', image: portfolioItems.find(p => p.category === 'Commercial')?.images?.[0] || portfolioItems[0]?.images?.[0] || '' }
-  ].filter(t => t.image);
+  const handleViewDetail = (item) => {
+    setSelectedItem(item);
+    setCurrentImageIndex(0);
+  };
 
   return (
     <>
-      <main id="portfolio" className="section portfolio-gallery-unique" role="main" aria-label="Portfolio proyek kami">
+      <section id="portfolio" className="portfolio-page">
         <div className="container">
-          {/* OUR PROJECT Section - foto asli proyek */}
-          <div className="our-project-section">
-            <h2 className="our-project-title">{t('portfolio.ourProject')}</h2>
-            <p className="our-project-subtitle">{t('portfolio.ourProjectSubtitle')}</p>
-            <div className="our-project-grid">
-              {ourProjectTypes.map(({ key, image }) => (
-                <article key={key} className="our-project-card">
-                  <div className="our-project-image">
-                    <img src={image} alt={`Proyek ${t(`portfolio.projectTypes.${key}.title`)} - PT Cipta Kreasi Buana`} loading="lazy" />
-                  </div>
-                  <div className="our-project-content">
-                    <h3>{t(`portfolio.projectTypes.${key}.title`)}</h3>
-                    <p>{t(`portfolio.projectTypes.${key}.desc`)}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <header className="portfolio-header-unique">
-            <div className="portfolio-header-content">
-              <span className="portfolio-badge">{t('portfolio.badge')}</span>
-              <h1 className="portfolio-title-unique">{t('portfolio.title')}</h1>
-              <p className="portfolio-subtitle-unique">{t('portfolio.subtitle')}</p>
-            </div>
-          </header>
-
-          {/* Search and Filter - intuitif & aksesibel */}
-          <div className="portfolio-controls-unique">
-            <div className="search-container-unique">
-              <Search size={20} />
-              <input
-                type="text"
-                placeholder={t('portfolio.searchPlaceholder')}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input-unique"
-              />
-            </div>
-            <div className="view-mode-toggle">
-              <button 
-                className={`view-mode-btn ${viewMode === 'carousel' ? 'active' : ''}`}
-                onClick={() => setViewMode('carousel')}
-                title={t('portfolio.viewModes.carousel')}
-              >
-                <List size={18} />
-                {t('portfolio.viewModes.carousel')}
-              </button>
-              <button 
-                className={`view-mode-btn ${viewMode === 'grid' ? 'active' : ''}`}
-                onClick={() => setViewMode('grid')}
-                title={t('portfolio.viewModes.grid')}
-              >
-                <Grid size={18} />
-                {t('portfolio.viewModes.grid')}
-              </button>
-            </div>
-          </div>
-
-          {/* Carousel View by Category */}
-          {viewMode === 'carousel' && (
-            <div className="portfolio-carousel-container">
-              {categories.filter(cat => cat.id !== 'all').map(category => {
-                const items = itemsByCategory[category.id];
-                if (!items || items.length === 0) return null;
-                
-                const currentIndex = carouselIndex[category.id] || 0;
-                const itemsPerSlide = 3;
-                const totalSlides = Math.ceil(items.length / itemsPerSlide);
-                const startIndex = currentIndex * itemsPerSlide;
-                const visibleItems = items.slice(startIndex, startIndex + itemsPerSlide);
-
-                return (
-                  <div key={category.id} className="category-carousel">
-                    <div className="category-header">
-                      <h2 className="category-title">
-                        {category.name}
-                        <span className="category-count">({items.length} proyek)</span>
-                      </h2>
-                      <div className="carousel-controls">
-                        <button 
-                          className="carousel-nav-btn prev"
-                          onClick={() => prevSlide(category.id)}
-                          disabled={totalSlides <= 1}
-                        >
-                          <ChevronLeft size={20} />
-                        </button>
-                        <span className="carousel-indicator">
-                          {currentIndex + 1} / {totalSlides}
-                        </span>
-                        <button 
-                          className="carousel-nav-btn next"
-                          onClick={() => nextSlide(category.id)}
-                          disabled={totalSlides <= 1}
-                        >
-                          <ChevronRight size={20} />
-                        </button>
-                      </div>
-                    </div>
-                    
-                    <div 
-                      className="carousel-track"
-                      onTouchStart={onTouchStart}
-                      onTouchMove={onTouchMove}
-                      onTouchEnd={() => onTouchEnd(category.id)}
-                    >
-                      <div className="carousel-slides">
-                        {visibleItems.map((item) => (
-                          <div key={item.id} className="carousel-slide">
-                            <div
-                              className="portfolio-card-carousel"
-                              role="button"
-                              tabIndex={0}
-                              onClick={() => { setSelectedItem(item); setCurrentImageIndex(0); }}
-                              onKeyDown={(e) => { if (e.key === 'Enter') { setSelectedItem(item); setCurrentImageIndex(0); } }}
-                            >
-                              <div className="portfolio-image-container-carousel">
-                                <img src={item.images[0]} alt={`${item.title} - Proyek PT Cipta Kreasi Buana`} loading="lazy" />
-                                <div className="portfolio-overlay-carousel">
-                                  <div className="portfolio-info-preview">
-                                    <span className="portfolio-category-badge-carousel">{item.category}</span>
-                                    <h3 className="portfolio-title-preview">{item.title}</h3>
-                                    <p className="portfolio-location-carousel">
-                                      <MapPin size={16} />
-                                      {item.location}
-                                    </p>
-                                    <div className="portfolio-meta-preview">
-                                      <span className="portfolio-year">
-                                        <Calendar size={14} />
-                                        {item.year}
-                                      </span>
-                                      <span className="portfolio-budget">{item.budget}</span>
-                                    </div>
-                                  </div>
-                                  <div className="portfolio-actions-carousel">
-                                    <button 
-                                      className="portfolio-action-btn gallery-btn"
-                                      onClick={(e) => { e.stopPropagation(); openGallery(item.images, 0); }}
-                                      title={t('portfolio.gallery')}
-                                    >
-                                      <Play size={18} />
-                                      <span>{t('portfolio.gallery')}</span>
-                                    </button>
-                                    <button 
-                                      className="portfolio-action-btn detail-btn"
-                                      onClick={(e) => { e.stopPropagation(); setSelectedItem(item); setCurrentImageIndex(0); }}
-                                      title={t('portfolio.detail')}
-                                    >
-                                      <Eye size={18} />
-                                      <span>{t('portfolio.detail')}</span>
-                                    </button>
-                                  </div>
-                                </div>
-                                {item.awards && item.awards.length > 0 && (
-                                  <div className="portfolio-award-badge-carousel">
-                                    <Award size={16} />
-                                    <span>{item.awards.length}</span>
-                                  </div>
-                                )}
-                              </div>
-                              <div className="portfolio-card-info-carousel">
-                                <h4 className="portfolio-card-title">{item.title}</h4>
-                                <p className="portfolio-description-preview">
-                                  {item.description.substring(0, 120)}{item.description.length > 120 ? '...' : ''}
-                                </p>
-                                <div className="portfolio-card-footer">
-                                  {item.client && item.client !== '-' && <span className="portfolio-client">Client: {item.client}</span>}
-                                  <span className="portfolio-duration">{item.duration}</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Dots indicator */}
-                    <div className="carousel-dots">
-                      {Array.from({ length: totalSlides }).map((_, index) => (
-                        <button
-                          key={index}
-                          className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
-                          onClick={() => setCarouselIndex(prev => ({ ...prev, [category.id]: index }))}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* Grid View (existing) */}
-          {viewMode === 'grid' && (
-            <>
-              {/* Category Filter */}
-                <div className="category-filter-unique">
-                {categories.map(category => (
-                  <button
-                    key={category.id}
-                    className={`category-btn-unique ${selectedCategory === category.id ? 'active' : ''}`}
-                    onClick={() => setSelectedCategory(category.id)}
-                  >
-                    <span className="category-name">{category.name}</span>
-                    <span className="category-count">({category.count})</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Results Info */}
-              <div className="results-info-unique">
-                <span>{t('portfolio.resultsInfo.showing')}</span>
-                <strong>{filteredItems.length}</strong>
-                <span>{t('portfolio.resultsInfo.of')}</span>
-                <strong>{portfolioItems.length}</strong>
-                <span>{t('portfolio.resultsInfo.projects')}</span>
-              </div>
-
-              {/* Portfolio Grid */}
-              <div className="portfolio-grid-unique">
-                {filteredItems.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className={`portfolio-card-unique ${index % 3 === 1 ? 'featured' : ''}`}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => { setSelectedItem(item); setCurrentImageIndex(0); }}
-                    onKeyDown={(e) => { if (e.key === 'Enter') { setSelectedItem(item); setCurrentImageIndex(0); } }}
-                  >
-                    <div className="portfolio-image-container-unique">
-                      <img src={item.images[0]} alt={`${item.title} - Proyek PT Cipta Kreasi Buana`} loading="lazy" />
-                      <div className="portfolio-overlay-unique">
-                        <div className="portfolio-info-preview">
-                          <span className="portfolio-category-badge-unique">{item.category}</span>
-                          <h3 className="portfolio-title-preview">{item.title}</h3>
-                          <p className="portfolio-location-unique">
-                            <MapPin size={16} />
-                            {item.location}
-                          </p>
-                          <div className="portfolio-meta-preview">
-                            <span className="portfolio-year">
-                              <Calendar size={14} />
-                              {item.year}
-                            </span>
-                            <span className="portfolio-budget">{item.budget}</span>
-                          </div>
-                        </div>
-                        <div className="portfolio-actions-unique">
-                          <button 
-                            className="portfolio-action-btn gallery-btn"
-                            onClick={(e) => { e.stopPropagation(); openGallery(item.images, 0); }}
-                            title={t('portfolio.gallery')}
-                          >
-                            <Play size={18} />
-                            <span>{t('portfolio.gallery')}</span>
-                          </button>
-                          <button 
-                            className="portfolio-action-btn detail-btn"
-                            onClick={(e) => { e.stopPropagation(); setSelectedItem(item); setCurrentImageIndex(0); }}
-                            title={t('portfolio.detail')}
-                          >
-                            <Eye size={18} />
-                            <span>{t('portfolio.detail')}</span>
-                          </button>
-                        </div>
-                      </div>
-                      {item.awards && item.awards.length > 0 && (
-                        <div className="portfolio-award-badge-unique">
-                          <Award size={16} />
-                          <span>{item.awards.length}</span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="portfolio-card-info-unique">
-                      <h4 className="portfolio-card-title">{item.title}</h4>
-                      <p className="portfolio-description-preview">
-                        {item.description.substring(0, 120)}{item.description.length > 120 ? '...' : ''}
-                      </p>
-                      <div className="portfolio-card-footer">
-                        {item.client && item.client !== '-' && <span className="portfolio-client">Client: {item.client}</span>}
-                        <span className="portfolio-duration">{item.duration}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {filteredItems.length === 0 && (
-                <div className="no-results-unique">
-                    <div className="no-results-icon"><Search size={48} strokeWidth={1.5} /></div>
-                    <h3>{t('portfolio.noResults.title')}</h3>
-                    <p>{t('portfolio.noResults.subtitle')}</p>
-                    <button onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}>
-                      {t('portfolio.noResults.reset')}
-                    </button>
-                  </div>
-              )}
-            </>
-          )}
+          <h1>Portofolio Proyek Design Interior</h1>
+          <p>
+            Jelajahi berbagai proyek interior, arsitektur, dan renovasi yang telah
+            kami kerjakan untuk klien di Tangerang Selatan dan Jakarta.
+          </p>
+          <PortfolioRadioLayout onViewDetail={handleViewDetail} />
         </div>
-      </main>
+      </section>
 
       {/* Special Gallery Mode with Slide Transition */}
       {isGalleryMode && (

@@ -1,0 +1,291 @@
+/* ============================================================
+   Pricing Package Selector Layout — same palette as portfolio-radio
+   Left: package list | Right: package detail
+   ============================================================ */
+
+.pricing-page {
+  padding: 2rem 0 4rem;
+  background: var(--beige, #f5f0e6);
+}
+
+.pricing-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.pricing-page h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-page h1 + p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 2rem;
+}
+
+.pricing-package-section {
+  padding: 2rem 0 4rem;
+  background: var(--beige, #f5f0e6);
+}
+
+.pricing-package-section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.pricing-package-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Alias for page integration */
+.pricing-selector-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---- Left: package list ---- */
+.pricing-package-selector {
+  background: #1E293B;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-self: start;
+  position: sticky;
+  top: 6rem;
+}
+
+.pricing-package-option {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #F8FAFC;
+  background: transparent;
+  border: none;
+  border-left: 4px solid transparent;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pricing-package-option:hover {
+  background: rgba(248, 250, 252, 0.06);
+}
+
+.pricing-package-option.active {
+  border-left: 4px solid #F59E0B;
+  background: rgba(245, 158, 11, 0.08);
+  color: #F8FAFC;
+}
+
+/* ---- Right: detail panel ---- */
+.pricing-package-detail {
+  background: #0F172A;
+  border-radius: 16px;
+  padding: 2rem;
+  min-height: 360px;
+}
+
+.pricing-package-detail-title {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.pricing-package-starting-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #F59E0B;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-package-services-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94A3B8;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-package-services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.pricing-package-services-list li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #F8FAFC;
+  padding: 0.35rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.pricing-package-services-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F59E0B;
+}
+
+.pricing-package-examples-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94A3B8;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-package-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-package-example-card {
+  flex: 0 0 calc(50% - 0.375rem);
+  min-width: 0;
+  background: #1E293B;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pricing-package-example-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+.pricing-package-example-card span {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  padding: 0.5rem 0.6rem;
+}
+
+.pricing-package-cta {
+  margin-top: 1rem;
+}
+
+.pricing-package-cta .pricing-consult-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0F172A;
+  background: #F59E0B;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.25rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pricing-package-cta .pricing-consult-btn:hover {
+  background: #D97706;
+  color: #0F172A;
+  transform: translateY(-1px);
+}
+
+/* ---- Mobile: stacked ---- */
+@media (max-width: 768px) {
+  .pricing-package-layout,
+  .pricing-selector-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .pricing-package-selector {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .pricing-package-option {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .pricing-package-option.active {
+    border-left: none;
+    border-bottom-color: #F59E0B;
+  }
+
+  .pricing-package-detail {
+    padding: 1.25rem;
+    min-height: 320px;
+  }
+
+  .pricing-package-detail-title {
+    font-size: 1.25rem;
+  }
+
+  .pricing-package-example-card {
+    flex: 0 0 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-package-section {
+    padding: 1.5rem 0 3rem;
+  }
+
+  .pricing-package-section-title {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-package-starting-price {
+    font-size: 1rem;
+  }
+}

@@ -14,6 +14,7 @@ import Furniture from './pages/Furniture';
 import Clients from './pages/Clients';
 import Consultation from './pages/Consultation';
 import Contact from './pages/Contact';
+import StickyCtaMobile from './components/StickyCtaMobile';
 import './App.css';
 
 // Scroll to top or hash on route change
@@ -33,8 +34,7 @@ function ScrollToTop() {
 }
 
 function App() {
-  // Temporary test mode - uncomment the line below to test if React is working
-  // return <Test />;
+
 
   return (
     <LanguageProvider>
@@ -42,6 +42,7 @@ function App() {
         <ScrollToTop />
         <div className="app">
           <Navbar />
+          <StickyCtaMobile />
           <Routes>
             <Route path="/" element={<HomeSimple />} />
             <Route path="/home-full" element={<Home />} />

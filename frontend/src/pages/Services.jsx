@@ -101,7 +101,7 @@ function Services() {
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate(`/layanan/${service.id}`); }}
             >
               <div className="svc-row-image">
-                <img src={service.image} alt={t(service.titleKey)} loading="lazy" />
+                <img src={service.image} alt={t(service.titleKey)} loading="lazy" decoding="async" />
                 <div className="svc-row-image-overlay" />
                 <span className="svc-row-image-num">{String(i + 1).padStart(2, '0')}</span>
               </div>
